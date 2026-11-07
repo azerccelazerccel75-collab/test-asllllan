@@ -534,6 +534,150 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* ===================== NOTIFICATIONS / BELL ===================== */
+.bell-btn{position:relative}
+.bell-dot{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:99px;background:var(--or);color:var(--on-or);font-size:10px;font-weight:700;display:grid;place-items:center;border:2px solid var(--bg);line-height:1}
+.has-unread .i{animation:ring 2.5s var(--ease) infinite}
+@keyframes ring{0%,88%,100%{transform:rotate(0)}90%{transform:rotate(12deg)}94%{transform:rotate(-10deg)}}
+.umenu-pop.notifs{width:340px;max-width:calc(100vw - 32px);padding:6px}
+.notif-head{display:flex;align-items:center;justify-content:space-between;padding:8px 10px 10px;border-bottom:1.5px solid var(--line);margin-bottom:4px}
+.notif-head b{font-weight:600}
+.notif-list{max-height:min(60vh,420px);overflow-y:auto;display:flex;flex-direction:column;gap:2px}
+.nitem{display:flex;gap:10px;padding:10px;border-radius:12px;text-align:left;background:transparent;border:0;color:inherit;cursor:pointer;width:100%;transition:background-color .15s}
+.nitem:hover{background:var(--tint)}
+.nitem.unread{background:var(--tint)}
+.nitem .dot{width:9px;height:9px;border-radius:50%;background:var(--or);flex:none;margin-top:5px;opacity:0}
+.nitem.unread .dot{opacity:1}
+.nitem .nx{min-width:0}
+.nitem .nx p{font-size:13.5px;line-height:1.4;font-weight:500}
+.nitem .nx small{font-size:11.5px;color:var(--soft)}
+.nicon{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;background:var(--tint-2);color:var(--or)}
+.nicon .i{width:18px;height:18px}
+
+/* ===================== ANNOUNCEMENT BAR ===================== */
+.ann-bar{display:flex;flex-direction:column;gap:0}
+.ann{display:flex;gap:12px;align-items:flex-start;padding:12px clamp(16px,3vw,36px);background:var(--tint);border-bottom:1.5px solid var(--line);animation:pageIn .3s var(--ease)}
+.ann .i.lead{width:20px;height:20px;color:var(--or);margin-top:2px;flex:none}
+.ann .ann-body{flex:1;min-width:0}
+.ann .ann-body b{font-weight:600;display:block;font-size:14.5px}
+.ann .ann-body p{font-size:13.5px;color:var(--soft);line-height:1.5;margin-top:2px;white-space:pre-wrap;word-break:break-word}
+.ann .ann-body small{font-size:11.5px;color:var(--faint)}
+.viewas-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px clamp(16px,3vw,36px);background:var(--or);color:var(--on-or);font-weight:600;font-size:13.5px}
+.viewas-bar .i{width:18px;height:18px}
+.viewas-bar .btn{margin-left:auto;border-color:var(--on-or);color:var(--on-or)}
+.viewas-bar .btn:hover{background:rgba(255,255,255,.15)}
+.shell.ro .ccard-actions,.shell.ro .lacts,.shell.ro .ledger .actions,.shell.ro .profile-acts,.shell.ro [data-act=courseForm],.shell.ro [data-act=studentForm],.shell.ro [data-act=paymentForm]{display:none!important}
+
+/* ===================== MAINTENANCE / PUBLIC ===================== */
+.maint,.public{position:fixed;inset:0;z-index:70;overflow-y:auto;background:var(--bg)}
+.maint{display:grid;place-items:center;padding:24px}
+.maint-card{max-width:440px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;padding:12px}
+.maint-mark{width:92px;height:92px;border-radius:28px;background:var(--or);display:grid;place-items:center;box-shadow:var(--shadow-lg)}
+.maint-mark .i{width:50px;height:50px;stroke:var(--on-or);stroke-width:1.8;animation:spin 3s linear infinite}
+.maint-card h1{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.maint-card p{color:var(--soft);font-size:15px;line-height:1.6;max-width:36ch}
+.maint-dev{margin-top:6px;font-size:13px}
+
+.pub-wrap{max-width:860px;margin:0 auto;padding:22px clamp(16px,4vw,32px) 70px}
+.pub-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0 22px}
+.pub-hero{background:var(--or);color:var(--on-or);border-radius:26px;padding:26px clamp(20px,4vw,34px);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.pub-hero .brand-rings{right:-130px;top:-130px}
+.pub-hero .eyebrow{font-size:13px;font-weight:600;opacity:.9}
+.pub-hero h1{font-size:clamp(26px,5vw,38px);font-weight:700;letter-spacing:-.02em;margin-top:6px}
+.pub-hero .sub{margin-top:8px;opacity:.92;font-size:15px}
+.pub-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:20px}
+.pub-stat{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:16px 18px}
+.pub-stat b{display:block;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pub-stat span{font-size:12.5px;color:var(--soft)}
+.pub-card{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:20px;margin-top:16px}
+.pub-card h3{font-size:17px;font-weight:600;margin-bottom:12px}
+.pub-foot{text-align:center;color:var(--faint);font-size:12.5px;margin-top:26px}
+
+/* ===================== CHARTS ===================== */
+.chart{width:100%}
+.donut-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.donut{width:132px;height:132px;flex:none}
+.donut .track{fill:none;stroke:var(--tint-2);stroke-width:12}
+.donut .val{fill:none;stroke:var(--or);stroke-width:12;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s var(--ease)}
+.donut text{fill:var(--or);font-weight:700;font-family:'Poppins',sans-serif}
+.legend{display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+.legend div{display:flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:4px;flex:none}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:10px}
+.bars .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;height:100%;justify-content:flex-end}
+.bars .stack{width:100%;max-width:46px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;flex:1}
+.bars .seg{width:100%;border-radius:5px 5px 0 0;min-height:2px;animation:grow .6s var(--ease) both}
+.bars .seg.held{background:var(--or)}
+.bars .seg.absent{background:var(--tint-2);border-radius:0}
+.bars .cap{font-size:11.5px;color:var(--soft);white-space:nowrap}
+.bars .num{font-size:12px;font-weight:700}
+@keyframes grow{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1)}}
+
+/* ===================== TOOLS TABS ===================== */
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1.5px solid var(--line);padding-bottom:0}
+.tabs button{position:relative;background:transparent;border:0;color:var(--soft);font-weight:600;font-size:14px;padding:10px 14px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:7px;transition:color .2s,background-color .2s}
+.tabs button .i{width:17px;height:17px}
+.tabs button:hover{color:var(--or);background:var(--tint)}
+.tabs button.on{color:var(--or)}
+.tabs button.on::after{content:"";position:absolute;left:10px;right:10px;bottom:-1.5px;height:2.5px;background:var(--or);border-radius:3px}
+.tabs .tbadge{min-width:19px;height:19px;padding:0 5px;border-radius:99px;background:var(--or);color:var(--on-or);font-size:11px;font-weight:700;display:grid;place-items:center}
+.tile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:18px;border:1.5px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.tile .i{width:26px;height:26px;color:var(--or)}
+.tile b{font-size:15px;font-weight:600;margin-top:4px}
+.tile p{font-size:13px;color:var(--soft);line-height:1.45;flex:1}
+
+/* survey target rows */
+.stat-chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:99px;font-size:12px;font-weight:600}
+.stat-chip.none{background:var(--tint-2);color:var(--soft)}
+.stat-chip.sent{background:var(--tint);border:1.5px solid var(--line-strong)}
+.stat-chip.answered{background:var(--or);color:var(--on-or)}
+.answers-grid{display:grid;grid-template-columns:1fr auto;gap:6px 14px;font-size:13px;margin-top:8px}
+.answers-grid .q{color:var(--soft)}
+.answers-grid .a{font-weight:600;text-align:right}
+.scorebar{display:inline-flex;gap:2px}
+.scorebar i{width:9px;height:9px;border-radius:2px;background:var(--tint-2)}
+.scorebar i.on{background:var(--or)}
+.resp-card{border:1.5px solid var(--line);border-radius:var(--r-lg);padding:16px;background:var(--surface);margin-bottom:12px}
+.resp-card.low{border-color:var(--or);box-shadow:inset 0 0 0 1px var(--or)}
+.resp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.astat{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;border:1.5px solid var(--line-strong)}
+.astat.new{background:var(--or);color:var(--on-or);border-color:var(--or)}
+.astat.reviewed{background:var(--tint-2)}
+.astat.contacted{background:var(--tint);border-style:dashed}
+
+/* question editor */
+.qedit{display:flex;flex-direction:column;gap:12px}
+.qrow{border:1.5px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.qrow-top{display:flex;gap:10px;align-items:center}
+.qrow-top .num{width:28px;height:28px;border-radius:9px;background:var(--tint-2);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.qrow-top .input{flex:1}
+
+/* dev panel */
+.dev-hero{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:22px;border-radius:var(--r-lg);border:1.5px solid var(--line);background:var(--surface)}
+.dev-hero .mark{width:56px;height:56px;border-radius:17px;background:var(--or);display:grid;place-items:center;flex:none}
+.dev-hero .mark .i{width:32px;height:32px;stroke:var(--on-or)}
+.maint-toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 20px;border:1.5px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.maint-toggle.on{border-color:var(--or);box-shadow:inset 0 0 0 1px var(--or)}
+.news-item{border:1.5px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;background:var(--surface);margin-bottom:12px}
+.news-item .kind{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:99px;font-size:11.5px;font-weight:700;margin-bottom:8px}
+.news-item .kind.new{background:var(--or);color:var(--on-or)}
+.news-item .kind.fix{background:var(--tint-2)}
+.news-item .kind.update{background:var(--tint);border:1.5px solid var(--line-strong)}
+.news-item h3{font-size:17px;font-weight:600}
+.news-item .body{white-space:pre-wrap;font-size:14px;color:var(--soft);line-height:1.6;margin-top:6px}
+.news-item time{font-size:12px;color:var(--faint)}
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:4px 0 16px}
+.tl-item::before{content:"";position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--or);border:2.5px solid var(--bg)}
+.tl-item b{font-weight:600}
+.tl-item small{color:var(--soft);font-size:12.5px}
+@media (max-width:760px){
+  .ann,.viewas-bar{padding-left:16px;padding-right:16px}
+  .donut-wrap{justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -551,8 +695,8 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
       <span class="logo-text"><b>Aslan Lessons</b><small>Dərs qeydiyyatı sistemi</small></span>
     </a>
     <div class="brand-copy">
-      <h1>Bütün dərslər bir yerdə.</h1>
-      <p>Müəllim dərsdən sonra qeyd edir, kurs rəhbəri gedişatı izləyir. Ay tamamlananda sistem özü xəbər verir.</p>
+      <h1>Hər keçirilən dərs — bir nöqtə.</h1>
+      <p>Müəllim dərsdən sonra qeyd edir, administrasiya gedişatı izləyir. Ay tamamlananda sistem özü xəbər verir.</p>
     </div>
     <div class="demo-month" aria-hidden="true">
       <div class="pips" id="demoPips"></div>
@@ -579,7 +723,7 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
           <span>Login</span>
           <span class="input-wrap">
             <svg class="i lead" viewBox="0 0 24 24" data-icon="user"></svg>
-            <input class="input has-lead" id="lgLogin" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Login" required>
+            <input class="input has-lead" id="lgLogin" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="məsələn: aysel.m" required>
           </span>
         </label>
         <label class="field">
@@ -592,7 +736,7 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
         </label>
         <div class="caps" id="capsHint" hidden><svg class="i" viewBox="0 0 24 24" data-icon="alert"></svg>Caps Lock aktivdir</div>
         <button class="btn btn-primary btn-lg btn-block" type="submit" id="loginBtn">Daxil ol</button>
-        <p class="hint">Şifrənizi unutmusunuzsa, kurs rəhbərinə müraciət edin.</p>
+        <p class="hint">Şifrənizi unutmusunuzsa, administratora müraciət edin.</p>
       </form>
     </div>
   </div>
@@ -601,7 +745,7 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
 <!-- ===================== APP ===================== -->
 <div id="shell" class="shell" hidden>
   <aside class="side" id="side">
-    <a class="logo" href="#" data-act="goHome" aria-label="Ana səhifə">
+    <a class="logo" href="#" data-act="goHome" aria-label="Ana bölmə">
       <span class="logo-mark" data-logo="light"></span>
       <span class="logo-text"><b>Aslan Lessons</b><small>Dərs qeydiyyatı</small></span>
     </a>
@@ -614,16 +758,27 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
       <button class="ibtn menu-btn" data-act="openNav" aria-label="Menyunu aç"></button>
       <h1 id="pageTitle"></h1>
       <div class="top-actions">
+        <div class="umenu" id="bell" hidden>
+          <button class="ibtn bell-btn" data-act="notifMenu" aria-label="Bildirişlər" title="Bildirişlər" id="bellBtn"></button>
+        </div>
         <button class="ibtn refresh-btn" data-act="refresh" aria-label="Yenilə" title="Yenilə"></button>
-        <button class="ibtn theme-btn" data-act="toggleTheme" aria-label="Gecə modu" title="Gecə modu"></button>
+        <button class="ibtn theme-btn" data-act="toggleTheme" aria-label="Görünüşü dəyiş" title="Görünüşü dəyiş"></button>
         <div class="umenu" id="umenu">
           <button class="ibtn" data-act="userMenu" aria-label="Profil" title="Profil" id="umenuBtn"></button>
         </div>
       </div>
     </header>
+    <div id="viewAsBar" class="viewas-bar" hidden></div>
+    <div id="annBar" class="ann-bar"></div>
     <main class="main" id="main"></main>
   </div>
 </div>
+
+<!-- ===================== PUBLIC (girişsiz) ===================== -->
+<div id="public" class="public" hidden></div>
+
+<!-- ===================== MAINTENANCE ===================== -->
+<div id="maint" class="maint" hidden></div>
 
 <div id="modalRoot"></div>
 <div id="toasts" class="toasts" aria-live="polite"></div>
@@ -633,7 +788,7 @@ input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.85;f
  *  1) Google Apps Script veb tətbiqinin linkini buraya yazın:
  *     (Yerləşdir → Veb tətbiq → URL, sonu /exec ilə bitir)
  * ============================================================ */
-const API_URL = 'https://script.google.com/macros/s/AKfycbxP_efNgIARpDbLOxQ63PUhH7Wru7fJLVoCv8WDvpt1b5maKr7HR-_HdgAO3rS66xR6/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbyLWUx4_BBT1J_k3mUOJcuKuPQwIEXqvDKSVOs8NOq468sik3sMhSSiaZgmSPB2VuXs/exec';
 
 /* ===================== ICONS ===================== */
 const ICONS = {
@@ -671,7 +826,25 @@ const ICONS = {
   card:'<rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="9" cy="11" r="2.3"/><path d="M5.8 16.5c.6-1.6 1.8-2.5 3.2-2.5s2.6.9 3.2 2.5M14.5 10h3.5M14.5 13.5h3.5"/>',
   info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8h.01"/>',
   dice:'<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M9 9h.01M15 9h.01M12 12h.01M9 15h.01M15 15h.01"/>',
-  list:'<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'
+  list:'<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
+  bell:'<path d="M18 9a6 6 0 1 0-12 0c0 6-2.5 7.5-2.5 7.5h17S18 15 18 9z"/><path d="M10.5 20a2 2 0 0 0 3 0"/>',
+  megaphone:'<path d="M3 11v2a1 1 0 0 0 1 1h2l9 5V5l-9 5H4a1 1 0 0 0-1 1z"/><path d="M18.5 8.5a4 4 0 0 1 0 7"/>',
+  tools:'<path d="M14.5 6.5a3.5 3.5 0 0 0 4.6 4.6l-9 9a2.1 2.1 0 0 1-3-3l9-9z"/><path d="M14.5 6.5 18 3M16 9l3.5-3.5"/>',
+  poll:'<path d="M5.5 10.5a6.5 6.5 0 1 1 6.5 6.5c-1.2 0-2.3-.3-3.3-.9L4 17.5l1.4-4.2c-.6-1-.9-2.1-.9-2.8z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/>',
+  rocket:'<path d="M5 15c-1.5 1-2 4-2 4s3-.5 4-2a2.1 2.1 0 0 0-2-2z"/><path d="M9 13c6-6 9-6 11-6 0 2 0 5-6 11l-3-1-1-1z"/><circle cx="14.5" cy="9.5" r="1.3"/>',
+  code:'<path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/>',
+  restore:'<path d="M3 8a9 9 0 1 0 2.5-3L3 8h5"/><path d="M12 8v4l3 2"/>',
+  grid:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>',
+  swap:'<path d="M7 4 3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/>',
+  wrench2:'<path d="M20 7a4 4 0 0 1-5.3 3.8l-7 7a2 2 0 1 1-2.5-2.5l7-7A4 4 0 0 1 20 7z"/>',
+  power:'<path d="M12 3v8M6.4 7A8 8 0 1 0 17.6 7"/>',
+  send:'<path d="M21 4 3 11l6 2.5L21 4zM21 4l-6 16-3-7.5"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/>',
+  wa:'<path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 8.5c0 4 3 7 6.5 7 .8 0 1.3-.9.9-1.6l-.8-1.2a1 1 0 0 0-1.2-.4l-.9.4a5 5 0 0 1-2-2l.4-.9a1 1 0 0 0-.4-1.2l-1.2-.8c-.7-.4-1.6.1-1.6.9z"/>',
+  flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+  chart:'<path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/>',
+  database:'<ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6M4.5 11.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/>',
+  eyeview:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2" opacity=".5"/>'
 };
 function ic(name, cls){ return `<svg class="i${cls?' '+cls:''}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]||''}</svg>`; }
 const LOGO_SVG = (bg) => `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 13 56 24 32 35 8 24z" fill="${bg}"/><path d="M19 29.5v9.5c0 3.4 5.8 6.5 13 6.5s13-3.1 13-6.5v-9.5" fill="none" stroke="${bg}" stroke-width="4"/><path d="M52 26v12.5" stroke="${bg}" stroke-width="3" stroke-linecap="round"/><circle cx="52" cy="41.5" r="3" fill="${bg}"/></svg>`;
@@ -723,7 +896,10 @@ function fmtHours(h){
 function today(){ return S.d ? S.d.today : new Date().toISOString().slice(0,10); }
 function can(k){ return !!(S.d && S.d.me.perms.includes(k)); }
 function me(){ return S.d.me; }
-function roleLabel(r){ return ({superadmin:'Baş admin', teacher:'Müəllim', helper:'Köməkçi'})[r] || r; }
+function roleLabel(r){ return ({superadmin:'Baş admin', teacher:'Müəllim', helper:'Köməkçi', developer:'Developer'})[r] || r; }
+function ro(){ return !!(S.d && S.d.me.readOnly); }
+function fmtMonthKey(k){ const [y,m]=String(k).split('-').map(Number); return m?`${MONTHS[m-1]} ${y}`:k; }
+function waLink(phone, text){ const d=String(phone||'').replace(/\D/g,''); const num=d.startsWith('994')?d:(d.startsWith('0')?'994'+d.slice(1):d); return `https://wa.me/${num}?text=${encodeURIComponent(text)}`; }
 function typeLabel(t){ return t === 'group' ? 'Qrup' : 'Fərdi'; }
 function stuName(id){ return S.sMap[id] ? S.sMap[id].name : '(silinmiş tələbə)'; }
 function usrName(id){ return S.uMap[id] ? S.uMap[id].name : '(silinmiş istifadəçi)'; }
@@ -789,6 +965,7 @@ async function api(action, payload = {}, opts = {}){
     catch (e) { throw new ApiError('Serverdən düzgün cavab gəlmədi. API_URL linkini və veb tətbiqin yerləşdirilməsini yoxlayın.'); }
     if (!json.ok) {
       if (json.code === 'AUTH' && action !== 'login') { forceLogout(json.error); throw new ApiError(json.error, 'AUTH'); }
+      if (json.code === 'MAINT' && action !== 'login') { showMaintenance(json.error); throw new ApiError(json.error, 'MAINT'); }
       if (json.code === 'PERM') setTimeout(() => syncData(true), 50);
       throw new ApiError(json.error || 'Naməlum xəta baş verdi.', json.code);
     }
@@ -824,21 +1001,25 @@ function applyData(d, opts = {}){
   const prevSig = S.permsSig;
   S.d = d;
   S.lastSync = Date.now();
-  S.sMap = {}; d.students.forEach(s => S.sMap[s.id] = s);
-  S.uMap = {}; d.users.forEach(u => S.uMap[u.id] = u);
-  S.cMap = {}; d.courses.forEach(c => S.cMap[c.id] = c);
-  S.permsSig = d.me.role + '|' + d.me.perms.join(',');
-  if (prevSig && prevSig !== S.permsSig) toast('Sizin icazələriniz yeniləndi.', 'info');
+  S.sMap = {}; (d.students||[]).forEach(s => S.sMap[s.id] = s);
+  S.uMap = {}; (d.users||[]).forEach(u => S.uMap[u.id] = u);
+  S.cMap = {}; (d.courses||[]).forEach(c => S.cMap[c.id] = c);
+  if (d.maintenance) S.maint = d.maintenance;
+  S.permsSig = d.me.role + '|' + d.me.perms.join(',') + '|' + (d.me.viewAs ? d.me.viewAs.id : '');
+  if (prevSig && prevSig !== S.permsSig && !d.me.isDev && !d.me.viewAs) toast('Sizin icazələriniz yeniləndi.', 'info');
   if (d.me.theme && d.me.theme !== S.theme && !opts.keepTheme) setTheme(d.me.theme, false);
   if (!$('#shell').hidden){
     renderChrome();
+    renderBell();
+    renderAnnBar();
+    maybePopup();
     if (!pageAllowed(S.page)) { go(defaultPage(), null, true); return; }
     if (!opts.noRender) renderPage(true);
   }
 }
 async function syncData(silent){
   if (!S.token) return;
-  try { await api('bootstrap', {}, { silent }); }
+  try { await api('bootstrap', S.viewAs ? { viewAs: S.viewAs } : {}, { silent }); }
   catch (e) { if (!silent && e.code !== 'AUTH') toast(e.message, 'err'); }
 }
 
@@ -918,7 +1099,7 @@ function confirmBox({ title, text, ok = 'Təsdiqlə', danger }){
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape'){
     if (modalStack.length){ modalStack[modalStack.length-1].close(); return; }
-    closeUserMenu();
+    closeUserMenu(); closeNotif();
     $('#shell').classList.remove('nav-open');
   }
 });
@@ -996,16 +1177,20 @@ $('#loginForm').addEventListener('submit', async e => {
 
 function enterApp(){
   $('#login').hidden = true;
+  $('#maint').hidden = true;
+  $('#public').hidden = true;
   $('#shell').hidden = false;
   clearInterval(demoTimer);
-  S.ui = {};
+  S.ui = {}; S.viewAs = null; popupShown = false;
   renderChrome();
+  renderBell(); renderAnnBar(); maybePopup();
   const h = parseHash();
   if (h.page && pageAllowed(h.page)) go(h.page, h.param, true); else go(defaultPage(), null, true);
   toast(`Xoş gəldiniz, ${me().name}!`, 'ok');
 }
 function forceLogout(msg){
-  S.token = null; S.d = null; S.permsSig = '';
+  S.token = null; S.d = null; S.permsSig = ''; S.viewAs = null;
+  $('#maint').hidden = true;
   showLogin(msg || 'Sessiya bitib. Yenidən daxil olun.');
 }
 async function logout(){
@@ -1018,25 +1203,30 @@ async function logout(){
 }
 
 /* ===================== ROUTING ===================== */
+function toolsAllowed(){ const f = S.d && S.d.flags; return !!(f && (f.tools || f.survey || f.announce)); }
 const PAGES = {
-  home:     { title: 'Əsas', icon: 'home', nav: true, allow: () => isAdminish() },
-  mine:     { title: 'Məşğələlər', icon: 'book', nav: true, allow: () => isTeacherish() },
+  home:     { title: 'İcmal', icon: 'home', nav: true, allow: () => isAdminish() },
+  mine:     { title: 'Məşğələlərim', icon: 'book', nav: true, allow: () => isTeacherish() },
   courses:  { title: 'Məşğələlər', icon: 'layers', nav: true, allow: () => can('courses.view') },
   students: { title: 'Tələbələr', icon: 'users', nav: true, allow: () => can('students.view') },
   student:  { title: 'Tələbə kartı', icon: 'card', nav: false, parent: 'students', allow: () => can('students.view') },
   staff:    { title: 'Müəllimlər', icon: 'teacher', nav: true, allow: () => can('teachers.view') },
   history:  { title: 'Dərs tarixçəsi', icon: 'calendar', nav: true, allow: () => can('attendance.view') },
+  tools:    { title: 'Admin alətləri', icon: 'tools', nav: true, allow: () => toolsAllowed() },
   logs:     { title: 'Jurnal', icon: 'clock', nav: true, allow: () => can('logs.view') },
   perms:    { title: 'İcazələr', icon: 'shield', nav: true, allow: () => me().isSuper },
+  news:     { title: 'Yeniliklər', icon: 'rocket', nav: true, allow: () => true },
+  dev:      { title: 'Developer paneli', icon: 'code', nav: true, allow: () => me().isDev },
   none:     { title: 'Xoş gəldiniz', icon: 'home', nav: false, allow: () => true }
 };
-function isAdminish(){ return can('courses.view') || can('students.view') || can('teachers.view'); }
-function isTeacherish(){ return me().role === 'teacher' || S.d.courses.some(c => c.teacherId === me().id); }
+function isAdminish(){ return !me().isDev && (can('courses.view') || can('students.view') || can('teachers.view')); }
+function isTeacherish(){ return !me().isDev && (me().role === 'teacher' || (S.d.courses||[]).some(c => c.teacherId === me().id)); }
 function pageAllowed(p){ return !!(p && PAGES[p] && S.d && PAGES[p].allow()); }
 function defaultPage(){
+  if (me().isDev) return 'dev';
   if (isAdminish()) return 'home';
   if (isTeacherish()) return 'mine';
-  for (const k of ['history','logs','perms']) if (pageAllowed(k)) return k;
+  for (const k of ['history','tools','logs','perms','news']) if (pageAllowed(k)) return k;
   return 'none';
 }
 function parseHash(){
@@ -1068,34 +1258,74 @@ window.addEventListener('popstate', () => {
 /* ===================== CHROME ===================== */
 function renderChrome(){
   const d = S.d; if (!d) return;
-  const done = d.courses.filter(c => c.complete).length;
-  const mineDone = d.courses.filter(c => c.complete && c.teacherId === d.me.id).length;
+  const courses = d.courses || [];
+  const done = courses.filter(c => c.complete).length;
+  const mineDone = courses.filter(c => c.complete && c.teacherId === d.me.id).length;
   const items = Object.entries(PAGES).filter(([k, p]) => p.nav && p.allow());
   const active = PAGES[S.page] && PAGES[S.page].parent ? PAGES[S.page].parent : S.page;
-  let html = '';
-  const teacherPart = items.filter(([k]) => k === 'mine');
-  const adminPart = items.filter(([k]) => k !== 'mine' && k !== 'perms');
-  const superPart = items.filter(([k]) => k === 'perms');
   const link = ([k, p]) => {
     let badge = '';
     const n = k === 'courses' ? done : k === 'mine' ? mineDone : 0;
     if (n) badge = `<span class="badge" title="Ayı tamamlanan məşğələlər">${n}</span>`;
     return `<a href="#/${k}" data-go="${k}" class="${active === k ? 'on' : ''}">${ic(p.icon)}<span>${p.title}</span>${badge}</a>`;
   };
-  if (teacherPart.length && adminPart.length) html += '<div class="nav-sec">Müəllim</div>';
-  html += teacherPart.map(link).join('');
-  if (teacherPart.length && adminPart.length) html += '<div class="nav-sec">İdarəetmə</div>';
-  html += adminPart.map(link).join('');
-  if (superPart.length){ html += '<div class="nav-sec">Baş admin</div>' + superPart.map(link).join(''); }
+  let html = '';
+  if (d.me.isDev){
+    html = items.filter(([k]) => k === 'dev' || k === 'news').map(link).join('');
+  } else {
+    const teacherPart = items.filter(([k]) => k === 'mine');
+    const adminPart = items.filter(([k]) => ['home','courses','students','staff','history','tools'].includes(k));
+    const superPart = items.filter(([k]) => k === 'perms' || k === 'logs');
+    const extra = items.filter(([k]) => k === 'news');
+    if (teacherPart.length && adminPart.length) html += '<div class="nav-sec">Müəllim</div>';
+    html += teacherPart.map(link).join('');
+    if (teacherPart.length && adminPart.length) html += '<div class="nav-sec">İdarəetmə</div>';
+    html += adminPart.map(link).join('');
+    if (superPart.length){ html += '<div class="nav-sec">İdarə</div>' + superPart.map(link).join(''); }
+    html += extra.map(link).join('');
+  }
   $('#nav').innerHTML = html;
-  $('#sideUser').innerHTML = `<span class="ava">${esc(initials(d.me.name))}</span><span class="who"><b>${esc(d.me.name)}</b><small>${roleLabel(d.me.role)}</small></span>
+  const sub = d.me.viewAs ? ('Baxış: ' + esc(d.me.viewAs.name)) : roleLabel(d.me.role);
+  $('#sideUser').innerHTML = `<span class="ava">${esc(initials(d.me.name))}</span><span class="who"><b>${esc(d.me.name)}</b><small>${sub}</small></span>
     <button class="ibtn sm" data-act="logout" title="Çıxış" aria-label="Çıxış">${ic('logout')}</button>`;
   $('#pageTitle').textContent = (PAGES[S.page] || {}).title || '';
   $('.menu-btn').innerHTML = ic('menu');
   $('.refresh-btn').innerHTML = ic('refresh');
   $('#umenuBtn').innerHTML = `<span class="ava" style="width:34px;height:34px;border-radius:11px;font-size:12.5px">${esc(initials(d.me.name))}</span>`;
+  $('#shell').classList.toggle('ro', !!d.me.readOnly);
+  renderBell(); renderAnnBar(); renderViewAs();
   setTheme(S.theme, false);
   document.title = `${(PAGES[S.page] || {}).title || ''} — Aslan Lessons`;
+}
+
+/* ---------- bell ---------- */
+function renderBell(){
+  const d = S.d, box = $('#bell'), btn = $('#bellBtn');
+  if (!d || d.me.isDev || !('notifs' in d)){ box.hidden = true; return; }
+  box.hidden = false;
+  const n = d.notifUnread || 0;
+  btn.classList.toggle('has-unread', n > 0);
+  btn.innerHTML = ic('bell') + (n ? `<span class="bell-dot">${n > 99 ? '99+' : n}</span>` : '');
+}
+/* ---------- announcement bar ---------- */
+function renderAnnBar(){
+  const d = S.d, bar = $('#annBar');
+  if (!d || !d.announcements || !d.announcements.length){ bar.innerHTML = ''; return; }
+  bar.innerHTML = d.announcements.map(a => `<div class="ann" data-ann="${a.id}">
+    ${ic('megaphone','lead')}
+    <div class="ann-body"><b>${esc(a.title)}</b><p>${esc(a.body)}</p><small>${esc(a.by)} · ${fmtDT(a.createdAt)}</small></div>
+    <button class="ibtn sm" data-act="dismissAnn" data-id="${a.id}" title="Bağla" aria-label="Bağla">${ic('x')}</button>
+  </div>`).join('');
+  hydrateIcons(bar);
+}
+/* ---------- view-as bar ---------- */
+function renderViewAs(){
+  const d = S.d, bar = $('#viewAsBar');
+  if (!d || !d.me.viewAs){ bar.hidden = true; return; }
+  bar.hidden = false;
+  bar.innerHTML = `${ic('eyeview')}<span>Developer rejimi: «${esc(d.me.viewAs.name)}» gözü ilə (yalnız oxu)</span>
+    <button class="btn btn-sm" data-act="exitViewAs">${ic('x')}Baxışdan çıx</button>`;
+  hydrateIcons(bar);
 }
 
 function renderPage(isRefresh){
@@ -1123,8 +1353,9 @@ document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]');
   if (t && ACT[t.dataset.act]){ e.preventDefault(); ACT[t.dataset.act](t, e); return; }
   if (!e.target.closest('#umenu')) closeUserMenu();
+  if (!e.target.closest('#bell')) closeNotif();
 });
-ACT.toggleTheme = () => setTheme(S.theme === 'dark' ? 'light' : 'dark', true);
+ACT.toggleTheme = () => { setTheme(S.theme === 'dark' ? 'light' : 'dark', !!S.token); const tb = $('#public .theme-btn'); if (tb) tb.innerHTML = ic(S.theme === 'dark' ? 'sun' : 'moon'); };
 ACT.togglePass = (b) => {
   const inp = document.getElementById(b.dataset.target);
   const show = inp.type === 'password';
@@ -1139,8 +1370,8 @@ ACT.showDone = () => { S.ui.cf = 'done'; go('courses'); };
 ACT.logout = () => { closeUserMenu(); logout(); };
 ACT.refresh = async (b) => {
   b.classList.add('spinning');
-  try { await api('bootstrap'); toast('Məlumatlar yeniləndi.', 'ok'); }
-  catch (e) { if (e.code !== 'AUTH') toast(e.message, 'err'); }
+  try { await api('bootstrap', S.viewAs ? { viewAs: S.viewAs } : {}); toast('Məlumatlar yeniləndi.', 'ok'); }
+  catch (e) { if (e.code !== 'AUTH' && e.code !== 'MAINT') toast(e.message, 'err'); }
   finally { b.classList.remove('spinning'); }
 };
 ACT.userMenu = () => {
@@ -1157,6 +1388,100 @@ ACT.userMenu = () => {
   box.appendChild(pop);
 };
 function closeUserMenu(){ const p = $('#umenu .umenu-pop'); if (p) p.remove(); }
+
+/* ===================== NOTIFICATIONS ===================== */
+const NOTIF_ICON = { course:'layers', lesson:'edit', month:'calplus', complete:'check', transfer:'swap', perm:'shield', survey:'poll', system:'info' };
+ACT.notifMenu = () => {
+  const box = $('#bell');
+  if (box.querySelector('.umenu-pop')) return closeNotif();
+  const d = S.d, items = d.notifs || [];
+  const pop = document.createElement('div');
+  pop.className = 'umenu-pop notifs';
+  pop.innerHTML = `<div class="notif-head"><b>Bildirişlər</b>${d.notifUnread ? `<button class="linkish" data-act="readAllNotifs">Hamısını oxundu et</button>` : ''}</div>
+    <div class="notif-list">${items.length ? items.map(n => `<button class="nitem ${n.read ? '' : 'unread'}" ${n.page ? `data-go="${n.page}" data-param="${esc(n.param||'')}"` : ''} data-nid="${n.id}">
+      <span class="nicon">${ic(NOTIF_ICON[n.type] || 'bell')}</span>
+      <span class="nx"><p>${esc(n.text)}</p><small>${fmtDT(n.createdAt)}</small></span><span class="dot"></span>
+    </button>`).join('') : `<div class="empty" style="border:0;padding:30px 10px"><p>Hələ bildiriş yoxdur.</p></div>`}</div>`;
+  box.appendChild(pop);
+  hydrateIcons(pop);
+  pop.querySelectorAll('.nitem').forEach(b => b.addEventListener('click', () => {
+    const id = b.dataset.nid;
+    if (b.classList.contains('unread')) api('markNotif', { id }, { silent: true, noRender: true }).catch(()=>{});
+    closeNotif();
+  }));
+};
+function closeNotif(){ const p = $('#bell .umenu-pop'); if (p) p.remove(); }
+ACT.readAllNotifs = (b) => run(b, async () => { await api('markAllNotifs', {}, { noRender: true }); closeNotif(); renderBell(); await syncData(true); });
+
+/* ===================== ANNOUNCEMENTS ===================== */
+ACT.dismissAnn = (b) => {
+  const id = b.dataset.id;
+  const el = b.closest('.ann'); if (el){ el.style.transition = 'opacity .2s'; el.style.opacity = '0'; setTimeout(() => el.remove(), 200); }
+  if (S.d.announcements) S.d.announcements = S.d.announcements.filter(a => a.id !== id);
+  api('dismissAnn', { id }, { silent: true, noRender: true }).catch(()=>{});
+};
+let popupShown = false;
+function maybePopup(){
+  const p = S.d && S.d.popupAnnouncement;
+  if (!p || popupShown) return;
+  popupShown = true;
+  let seen = false;
+  const markSeen = () => { if (seen) return; seen = true; api('seenPopup', { id: p.id }, { silent: true, noRender: true }).catch(()=>{}); if (S.d) S.d.popupAnnouncement = null; };
+  openModal({
+    title: p.title, size: 'sm',
+    body: `<div class="row" style="gap:12px;align-items:flex-start;margin-bottom:6px">${ic('megaphone','lead')}<p class="confirm-text" style="white-space:pre-wrap;flex:1">${esc(p.body)}</p></div>
+      <p class="hint">${esc(p.by)} · ${fmtDT(p.createdAt)}</p>`,
+    foot: `<button class="btn btn-primary" data-close>${ic('check')}Anladım</button>`,
+    onClose: markSeen
+  });
+}
+
+/* ===================== MAINTENANCE ===================== */
+function showMaintenance(msg){
+  closeAllModals();
+  $('#shell').hidden = true; $('#login').hidden = true; $('#public').hidden = true;
+  const m = $('#maint'); m.hidden = false;
+  const isDev = S.d && S.d.me && S.d.me.isDev;
+  m.innerHTML = `<div class="maint-card">
+    <div class="maint-mark">${ic('wrench2')}</div>
+    <h1>Texniki işlər aparılır</h1>
+    <p>${esc(msg || (S.maint && S.maint.text) || 'Saytda texniki işlər gedir. Zəhmət olmasa, bir az sonra yenidən cəhd edin.')}</p>
+    <button class="btn btn-primary btn-lg" data-act="retryMaint">${ic('refresh')}Yenidən yoxla</button>
+    ${isDev ? `<p class="maint-dev"><button class="linkish" data-act="goDevFromMaint">Developer panelinə qayıt</button></p>` : ''}
+  </div>`;
+  hydrateIcons(m);
+}
+ACT.retryMaint = async (b) => {
+  const r = await api('maintenanceStatus', {}, { noRender: true }).catch(() => null);
+  if (r && r.maintenance && !r.maintenance.on){ $('#maint').hidden = true; if (S.token) { try { await syncData(false); $('#shell').hidden = false; } catch(e){ showLogin(); } } else showLogin(); }
+  else toast('Texniki işlər hələ davam edir.', 'info');
+};
+ACT.goDevFromMaint = () => { $('#maint').hidden = true; $('#shell').hidden = false; go('dev'); };
+
+/* ===================== VIEW AS (developer) ===================== */
+ACT.devViewAs = (b) => run(b, async () => { S.viewAs = b.dataset.id; await api('bootstrap', { viewAs: S.viewAs }); go(defaultPage(), null, true); });
+ACT.exitViewAs = () => run(null, async () => { S.viewAs = null; await api('bootstrap', {}); go('dev', null, true); });
+
+/* ===================== CHARTS (inline SVG) ===================== */
+function donut(pct, label){
+  const r = 54, c = 2 * Math.PI * r, off = c * (1 - pct / 100);
+  return `<svg class="donut" viewBox="0 0 132 132" role="img" aria-label="${pct}%">
+    <circle class="track" cx="66" cy="66" r="${r}"/>
+    <circle class="val" cx="66" cy="66" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${off}"/>
+    <text x="66" y="62" text-anchor="middle" font-size="26">${pct}%</text>
+    <text x="66" y="84" text-anchor="middle" font-size="11" fill="currentColor" opacity=".6">${esc(label||'')}</text>
+  </svg>`;
+}
+function barsChart(series){
+  if (!series.length) return '<p class="hint">Məlumat yoxdur.</p>';
+  const max = Math.max(1, ...series.map(s => s.held + s.absent));
+  return `<div class="bars">${series.map(s => {
+    const h = Math.round(s.held / max * 100), a = Math.round(s.absent / max * 100);
+    return `<div class="col"><span class="num">${s.held}${s.absent ? '/'+(s.held+s.absent) : ''}</span>
+      <div class="stack">${s.absent ? `<div class="seg absent" style="height:${a}%"></div>` : ''}<div class="seg held" style="height:${h}%"></div></div>
+      <span class="cap">Ay ${s.monthNo}</span></div>`;
+  }).join('')}</div>`;
+}
 
 /* ===================== AUTO SYNC ===================== */
 setInterval(() => {
@@ -1429,6 +1754,8 @@ function cardHtml(k){
   const total = k.stats.held + k.stats.absent;
   const rate = total ? Math.round(k.stats.held / total * 100) : null;
   const acts = [];
+  acts.push(`<button class="btn btn-sm btn-soft" data-act="parentLink" data-id="${s.id}">${ic('wa')}Valideyn linki</button>`);
+  if (can('survey.send')) acts.push(`<button class="btn btn-sm btn-soft" data-act="cardSurvey" data-id="${s.id}">${ic('poll')}Sorğu göndər</button>`);
   if (can('students.edit')) acts.push(`<button class="btn btn-sm" data-act="studentForm" data-id="${s.id}">${ic('edit')}Redaktə et</button>`);
   if (can('payments.add')) acts.push(`<button class="btn btn-primary btn-sm" data-act="paymentForm" data-id="${s.id}">${ic('wallet')}Ödəniş əlavə et</button>`);
   const kv = [['Telefon', s.phone], ['Valideyn', s.parentName], ['Valideynin telefonu', s.parentPhone], ['Qeydiyyat tarixi', s.createdAt ? fmtDate(s.createdAt) : '']]
@@ -1448,6 +1775,13 @@ function cardHtml(k){
   </div>
   <div class="summary" style="margin-top:16px">${sum.join('')}</div>
 
+  ${total ? `<div class="section"><div class="section-head"><h3>Davamiyyət</h3></div>
+    <div class="profile" style="gap:28px;align-items:center"><div>${donut(rate||0,'davamiyyət')}</div>
+      <div style="flex:1;min-width:200px">
+        <div class="legend" style="margin-bottom:${k.monthly.length>1?'16px':'0'}"><div><i style="background:var(--or)"></i>Keçirilən dərs: <b>${k.stats.held}</b></div><div><i style="background:var(--tint-2)"></i>Qayıb: <b>${k.stats.absent}</b></div></div>
+        ${k.monthly.length>1 ? `<p class="lbl" style="margin-bottom:4px">Aylar üzrə</p>${barsChart(k.monthly)}` : ''}
+      </div></div></div>` : ''}
+
   <div class="section"><div class="section-head"><h3>Məşğələlər<span class="count">${k.courses.length}</span></h3></div>
     ${k.courses.length ? `<div class="cgrid">${k.courses.map(c => `<article class="ccard${c.complete ? ' done' : ''}">
       <div class="ccard-top"><span class="tag${c.type === 'group' ? ' solid' : ''}">${typeLabel(c.type)}</span>${c.complete ? '<span class="tag line">Ay tamamlandı</span>' : ''}<span class="month">Ay ${c.monthNo}</span></div>
@@ -1455,6 +1789,7 @@ function cardHtml(k){
       <p class="who">Müəllim: <b>${esc(c.teacherName)}</b></p>${c.type === 'group' ? `<p class="who">Qrupda: <b>${esc(c.studentNames.join(', '))}</b></p>` : ''}</div>
       <div class="ccard-prog">${pips(c.held, c.lessonsPerMonth)}<span class="frac">${c.held}/${c.lessonsPerMonth}</span></div>
       <p class="ccard-meta">Bu ay tələbə ${c.mine.held} dərsdə iştirak edib${c.mine.absent ? `, ${c.mine.absent} dəfə qayıb olub` : ''}.</p>
+      ${c.type === 'group' && can('tools.bulk') ? `<div class="ccard-actions"><button class="btn btn-sm btn-soft" data-act="transferForm" data-student="${s.id}" data-from="${c.id}">${ic('swap')}Başqa qrupa köçür</button></div>` : ''}
     </article>`).join('')}</div>` : emptyBox('Məşğələ yoxdur', 'Bu tələbə hazırda heç bir məşğələdə iştirak etmir.')}
   </div>
 
@@ -1509,9 +1844,10 @@ function staffList(){
     ${list.map(u => {
       const cs = S.d.courses.filter(c => c.teacherId === u.id);
       const isSelf = u.id === me().id;
-      const canEdit = u.role === 'superadmin' ? isSelf : can('teachers.edit');
-      const canDel = u.role !== 'superadmin' && !isSelf && can('teachers.delete');
-      const pw = can('teachers.passwords') && (u.role !== 'superadmin' || me().isSuper)
+      const locked = u.role === 'superadmin' || u.role === 'developer';
+      const canEdit = locked ? isSelf : can('teachers.edit');
+      const canDel = !locked && !isSelf && can('teachers.delete');
+      const pw = can('teachers.passwords') && !locked
         ? `<span class="pw"><code id="pw_${u.id}">••••••</code><button class="ibtn sm" data-act="revealPw" data-id="${u.id}" title="Şifrəni göstər" aria-label="Şifrəni göstər">${ic('eye')}</button></span>`
         : '<span class="faint">Gizli</span>';
       return `<tr>
@@ -1795,14 +2131,23 @@ ACT.studentForm = (b) => {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(f));
         if (data.name.trim().length < 2) return fieldErr(f, '«Ad Soyad» sahəsini doldurun (ən azı 2 simvol).');
-        run(el.querySelector('[type=submit]'), async () => {
+        const submit = (force) => run(el.querySelector('[type=submit]'), async () => {
           try {
-            await api(s ? 'editStudent' : 'addStudent', Object.assign({ id: s ? s.id : '' }, data));
+            await api(s ? 'editStudent' : 'addStudent', Object.assign({ id: s ? s.id : '', force }, data));
             close();
             toast(s ? 'Tələbənin məlumatları yeniləndi.' : 'Tələbə əlavə edildi.');
             if (S.page === 'student') loadCard();
-          } catch (ex) { if (ex.code !== 'AUTH') fieldErr(f, ex.message); }
+          } catch (ex) {
+            if (ex.code === 'AUTH') return;
+            if (ex.code === 'DUP'){
+              const ok = await confirmBox({ title: 'Oxşar tələbə var', text: esc(ex.message), ok: 'Yenə də əlavə et' });
+              if (ok) submit(true);
+              return;
+            }
+            fieldErr(f, ex.message);
+          }
         });
+        submit(false);
       });
     }
   });
@@ -1814,9 +2159,9 @@ ACT.deleteStudent = async (b) => {
     toast(`«${s.name}» ${cs.length} məşğələdə iştirak edir. Əvvəlcə onu məşğələlərdən çıxarın və ya həmin məşğələləri silin.`, 'err');
     return;
   }
-  const ok = await confirmBox({ title: 'Tələbəni sil', text: `<b>${esc(s.name)}</b> silinsin? Bu əməliyyatı geri qaytarmaq olmaz. Keçmiş dərs və ödəniş qeydləri cədvəldə qalacaq.`, ok: 'Sil', danger: true });
+  const ok = await confirmBox({ title: 'Tələbəni sil', text: `<b>${esc(s.name)}</b> silinsin? Zibil qutusuna köçürüləcək və 30 gün ərzində bərpa oluna bilər.`, ok: 'Sil', danger: true });
   if (!ok) return;
-  run(null, async () => { await api('deleteStudent', { id: s.id }); toast('Tələbə silindi.'); });
+  run(null, async () => { await api('deleteStudent', { id: s.id }); toast('Tələbə zibil qutusuna köçürüldü.'); });
 };
 
 /* ---------- User form ---------- */
@@ -2225,14 +2570,671 @@ ACT.deletePayment = async (b) => {
   run(null, async () => { await api('deletePayment', { id: b.dataset.id }); toast('Ödəniş silindi.'); if (S.page === 'student') loadCard(); });
 };
 
+/* ---------- Parent card link & survey from card ---------- */
+ACT.parentLink = (b) => run(b, async () => {
+  const r = await api('studentLink', { id: b.dataset.id }, { noRender: true });
+  const url = location.origin + location.pathname + '#/v/' + r.token;
+  const waText = `Salam! ${r.name} ilə bağlı dərs hesabatına buradan baxa bilərsiniz:\n${url}`;
+  openModal({
+    title: 'Valideyn linki', size: 'sm',
+    body: `<p class="hint" style="margin-bottom:12px">Bu link girişsiz açılır və yalnız <b>${esc(r.name)}</b>-ın məlumatlarını göstərir: dərslər, davamiyyət, qiymətlər. Linki valideynə göndərin.</p>
+      <div class="input-wrap"><input class="input" id="svLink" readonly value="${esc(url)}"><button class="ibtn sm" data-act="copyLink" aria-label="Kopyala">${ic('copy')}</button></div>`,
+    foot: `<a class="btn btn-soft" href="${esc(waLink(r.parentPhone, waText))}" target="_blank" rel="noopener">${ic('wa')}WhatsApp</a>
+      <button class="btn btn-primary" data-act="copyLink">${ic('copy')}Linki kopyala</button>`,
+    onMount: (el) => { const i = el.querySelector('#svLink'); setTimeout(() => { i.focus(); i.select(); }, 60); }
+  });
+});
+ACT.cardSurvey = (b) => {
+  const k = S.ui.card; if (!k) return;
+  const courses = k.courses.map(c => ({ id: c.id, title: c.title || (c.type === 'individual' ? k.student.name : c.studentNames.slice(0,2).join(', ')), teacherName: c.teacherName }));
+  if (!courses.length) return toast('Bu tələbə heç bir məşğələdə yoxdur.', 'err');
+  if (courses.length === 1) return createSurvey(b, k.student.id, courses[0].id);
+  openModal({ title: 'Məşğələni seçin', size: 'sm', sub: esc(k.student.name),
+    body: `<div class="stack">${courses.map(c => `<button class="btn btn-block btn-soft" data-pick="${c.id}">${esc(c.title)} — ${esc(c.teacherName)}</button>`).join('')}</div>`,
+    onMount: (el, close) => el.querySelectorAll('[data-pick]').forEach(x => x.addEventListener('click', () => { close(); createSurvey(null, k.student.id, x.dataset.pick); }))
+  });
+};
+
+/* ============================================================
+ *  YENİLİKLƏR (changelog)
+ * ============================================================ */
+const CL_KIND = { new:['Yeni','new'], fix:['Düzəliş','fix'], update:['Yenilik','update'] };
+RENDER.news = () => `<div class="page-head"><div><h2>Yeniliklər</h2><p>Saytdakı yeniliklər və düzəlişlər.</p></div>
+  ${me().isDev ? `<button class="btn btn-primary" data-act="newsForm">${ic('plus')}Yeni qeyd</button>` : ''}</div>
+  <div id="newsList">${loadingBox()}</div>`;
+AFTER.news = () => loadNews();
+async function loadNews(){
+  try {
+    const res = await api('listChangelog', {}, { noRender: true });
+    if (S.page !== 'news') return;
+    S.ui.canEditNews = res.canEdit;
+    const box = $('#newsList'); if (!box) return;
+    if (!res.items.length){ box.innerHTML = emptyBox('Hələ qeyd yoxdur', me().isDev ? 'İlk yeniliyi əlavə edin.' : 'Developer yenilik əlavə edəndə burada görünəcək.'); return; }
+    box.innerHTML = res.items.map(c => {
+      const k = CL_KIND[c.kind] || CL_KIND.update;
+      return `<article class="news-item"><span class="kind ${k[1]}">${esc(k[0])}</span>
+        <div class="row" style="justify-content:space-between;align-items:flex-start">
+          <h3>${esc(c.title)}</h3>
+          ${res.canEdit ? `<span class="lacts"><button class="ibtn sm" data-act="newsForm" data-id="${c.id}" aria-label="Redaktə">${ic('edit')}</button><button class="ibtn sm" data-act="deleteNews" data-id="${c.id}" aria-label="Sil">${ic('trash')}</button></span>` : ''}
+        </div>
+        ${c.body ? `<div class="body">${esc(c.body)}</div>` : ''}<time>${fmtDT(c.createdAt)}</time></article>`;
+    }).join('');
+    hydrateIcons(box);
+  } catch (e) { if (e.code !== 'AUTH' && e.code !== 'MAINT'){ const box=$('#newsList'); if (box) box.innerHTML = emptyBox('Yüklənmədi', esc(e.message)); } }
+}
+S.ui.newsCache = {};
+ACT.newsForm = async (b) => {
+  let item = null;
+  if (b.dataset.id){ const res = await api('listChangelog', {}, { noRender: true }).catch(()=>null); item = res && res.items.find(x => x.id === b.dataset.id); }
+  openModal({
+    title: item ? 'Yeniliyi redaktə et' : 'Yeni qeyd', size: 'sm',
+    body: `<form class="stack" id="nwForm" novalidate>
+      <div class="field"><span>Növ</span><div class="seg full">
+        ${['new','update','fix'].map(k => `<label><input type="radio" name="kind" value="${k}" ${(item?item.kind:'update')===k?'checked':''}><span>${CL_KIND[k][0]}</span></label>`).join('')}</div></div>
+      <label class="field"><span>Başlıq</span><input class="input" name="title" maxlength="160" required value="${esc(item?item.title:'')}" placeholder="məsələn: Sorğular əlavə edildi"></label>
+      <label class="field"><span>Mətn</span><textarea class="textarea" name="body" maxlength="3000" placeholder="Nə dəyişdi?">${esc(item?item.body:'')}</textarea></label>
+    </form>`,
+    foot: `<button class="btn btn-ghost" data-close>Ləğv et</button><button class="btn btn-primary" form="nwForm" type="submit">${ic('check')}Yadda saxla</button>`,
+    onMount: (el, close) => el.querySelector('#nwForm').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const d = Object.fromEntries(new FormData(el.querySelector('#nwForm')));
+      if (!d.title.trim()) return fieldErr(el.querySelector('#nwForm'), 'Başlıq yazın.');
+      run(el.querySelector('[type=submit]'), async () => {
+        try { await api('addChangelog', Object.assign({ id: item ? item.id : '' }, d), { noRender: true }); close(); toast('Yadda saxlanıldı.'); loadNews(); }
+        catch (ex) { if (ex.code !== 'AUTH') fieldErr(el.querySelector('#nwForm'), ex.message); }
+      });
+    })
+  });
+};
+ACT.deleteNews = async (b) => {
+  if (!await confirmBox({ title: 'Qeydi sil', text: 'Bu yenilik qeydi silinsin?', ok: 'Sil', danger: true })) return;
+  run(null, async () => { await api('deleteChangelog', { id: b.dataset.id }, { noRender: true }); toast('Silindi.'); loadNews(); });
+};
+
+/* ============================================================
+ *  DEVELOPER PANELİ
+ * ============================================================ */
+RENDER.dev = () => {
+  const d = S.d, m = d.maintenance || {};
+  const teachers = (d.devPanel && d.devPanel.teachers) || [];
+  return `<div class="page-head"><div><h2>Developer paneli</h2><p>Texniki idarəetmə. Bu bölmə yalnız developer hesabı üçündür.</p></div></div>
+    <div class="dev-hero"><div class="mark">${ic('code')}</div>
+      <div style="flex:1;min-width:0"><h3 style="font-size:18px">Xoş gəldiniz, ${esc(d.me.name)}</h3>
+      <p class="muted" style="font-size:13px">Sizin fəaliyyətiniz adi jurnalda görünmür, ayrıca texniki jurnalda saxlanılır.</p></div>
+      <button class="btn btn-soft" data-act="devStats">${ic('database')}Sistem statistikası</button></div>
+
+    <div class="section"><div class="maint-toggle ${m.on ? 'on' : ''}">
+      <div style="flex:1;min-width:200px"><div class="row" style="gap:8px"><b style="font-size:16px">Texniki iş rejimi</b>${m.on ? '<span class="tag solid">AKTİV</span>' : '<span class="tag">Söndürülüb</span>'}</div>
+        <p class="hint" style="margin-top:4px">Açılanda bütün istifadəçilər «Texniki işlər aparılır» ekranını görür. Yalnız siz daxil ola bilərsiniz.${m.on && m.at ? ' Açılıb: ' + fmtDT(m.at) : ''}</p></div>
+      <button class="btn ${m.on ? 'btn-soft' : 'btn-primary'} btn-lg" data-act="toggleMaint" data-on="${m.on ? '0' : '1'}">${ic('power')}${m.on ? 'Rejimi söndür' : 'Rejimi aç'}</button>
+    </div></div>
+
+    <div class="section"><div class="section-head"><h3>Müəllim gözü ilə bax</h3></div>
+      <p class="hint" style="margin-bottom:12px">İstifadəçinin saytı necə gördüyünü yoxlamaq üçün onu seçin. Rejim yalnız oxu üçündür — heç nə dəyişə bilməzsiniz.</p>
+      ${teachers.length ? `<div class="tile-grid">${teachers.map(t => `<button class="tile" data-act="devViewAs" data-id="${t.id}" style="text-align:left;cursor:pointer">
+        <div class="row" style="gap:10px"><span class="ava">${esc(initials(t.name))}</span><div><b style="margin:0">${esc(t.name)}</b><br><small class="muted">${roleLabel(t.role)}${t.login?' · '+esc(t.login):''}</small></div></div>
+        <span class="btn btn-sm btn-soft" style="margin-top:8px;align-self:flex-start">${ic('eyeview')}Gözü ilə bax</span></button>`).join('')}</div>` : emptyBox('İstifadəçi yoxdur', 'Hələ müəllim və ya admin yoxdur.')}
+    </div>
+
+    <div class="section"><div class="section-head"><h3>Yeniliklər (Changelog)</h3><button class="btn btn-primary btn-sm" data-act="newsForm">${ic('plus')}Yeni qeyd</button></div>
+      <p class="hint">İstifadəçilərə göstərilən yenilikləri «Yeniliklər» bölməsindən idarə edin.</p>
+      <div class="row" style="margin-top:12px"><button class="btn btn-soft" data-go="news">${ic('rocket')}Yeniliklər bölməsinə keç</button></div>
+    </div>`;
+};
+ACT.toggleMaint = async (b) => {
+  const on = b.dataset.on === '1';
+  if (on){
+    const ok = await confirmBox({ title: 'Texniki rejimi aç', text: 'Bütün istifadəçilər (müəllimlər və admin) sistemdən çıxarılacaq və «Texniki işlər» ekranını görəcək. Davam edilsin?', ok: 'Rejimi aç' });
+    if (!ok) return;
+  }
+  run(b, async () => {
+    const r = await api('setMaintenance', { on, text: 'Saytda texniki işlər aparılır. Zəhmət olmasa, bir az sonra yenidən cəhd edin.' }, { noRender: true });
+    S.d.maintenance = r.maintenance; S.maint = r.maintenance;
+    toast(on ? 'Texniki rejim açıldı.' : 'Texniki rejim söndürüldü.');
+    renderPage(true);
+  });
+};
+ACT.devStats = (b) => run(b, async () => {
+  const r = await api('devStats', {}, { noRender: true });
+  openModal({ title: 'Sistem statistikası', size: 'sm',
+    body: `<div class="kv">
+      ${[['Tələbələr', r.students+' (+'+r.trashStudents+' zibildə)'],['Məşğələlər', r.courses],['İstifadəçilər', r.users],['Dərs qeydləri (sətir)', r.lessons],['Sorğu göndərilib', r.surveysSent],['Sorğu cavablanıb', r.surveysAnswered],['Sorğu versiyası', r.surveyVersion],['Server vaxtı', fmtDT(r.now)]]
+        .map(([k,v]) => `<div><span>${k}</span><b>${esc(String(v))}</b></div>`).join('')}
+    </div>
+    <p class="hint" style="margin-top:14px">Vərəqlərdəki sətir sayı:</p>
+    <div class="chips" style="margin-top:6px">${Object.keys(r.sheets).map(k => `<span class="cchip"><b>${k}</b><span>${r.sheets[k]} sətir</span></span>`).join('')}</div>`,
+    foot: `<button class="btn btn-primary" data-close>Bağla</button>` });
+});
+
+/* ============================================================
+ *  ADMIN ALƏTLƏRİ
+ * ============================================================ */
+function toolTabs(){
+  const t = [];
+  if (S.d.flags.announce) t.push(['ann', 'Elanlar', 'megaphone']);
+  if (can('survey.send')) t.push(['survey', 'Sorğu göndər', 'send']);
+  if (can('survey.view')) t.push(['responses', 'Sorğu cavabları', 'poll']);
+  if (can('survey.edit')) t.push(['questions', 'Suallar', 'list']);
+  if (can('tools.trash')) t.push(['trash', 'Zibil qutusu', 'trash']);
+  if (can('tools.bulk')) t.push(['bulk', 'Toplu əməliyyatlar', 'swap']);
+  if (can('tools.datacheck')) t.push(['check', 'Yoxlama', 'shield']);
+  return t;
+}
+RENDER.tools = () => {
+  const tabs = toolTabs();
+  if (!tabs.length) return emptyBox('Alət yoxdur', 'Sizə hələ heç bir alət icazəsi verilməyib.');
+  if (!S.ui.tab || !tabs.some(t => t[0] === S.ui.tab)) S.ui.tab = tabs[0][0];
+  return `<div class="page-head"><div><h2>Admin alətləri</h2><p>Elanlar, sorğular və texniki alətlər bir yerdə.</p></div></div>
+    <div class="tabs" role="tablist">${tabs.map(([k, l, i]) => `<button role="tab" data-tool="${k}" class="${S.ui.tab === k ? 'on' : ''}">${ic(i)}${l}</button>`).join('')}</div>
+    <div id="toolBody">${loadingBox()}</div>`;
+};
+AFTER.tools = (root) => {
+  $$('[data-tool]', root).forEach(b => b.addEventListener('click', () => { S.ui.tab = b.dataset.tool; renderPage(true); }));
+  loadTool(S.ui.tab);
+};
+function toolBox(){ return $('#toolBody'); }
+async function loadTool(tab){
+  const box = toolBox(); if (!box) return;
+  try {
+    if (tab === 'ann') return drawAnns(await api('listAnns', {}, { noRender: true }));
+    if (tab === 'survey') return drawSurveyTargets(await api('surveyTargets', {}, { noRender: true }));
+    if (tab === 'responses') return drawResponses(await api('surveyResponses', S.ui.respFilter || {}, { noRender: true }));
+    if (tab === 'questions') return drawQuestions(await api('getSurveyQuestions', {}, { noRender: true }));
+    if (tab === 'trash') return drawTrash(await api('trashList', {}, { noRender: true }));
+    if (tab === 'bulk') return drawBulk();
+    if (tab === 'check') return drawCheckIntro();
+  } catch (e) {
+    if (e.code === 'AUTH' || e.code === 'MAINT') return;
+    if (box.isConnected) box.innerHTML = emptyBox('Yüklənmədi', esc(e.message), `<button class="btn btn-primary" data-act="reloadTool">${ic('refresh')}Yenidən</button>`);
+  }
+}
+ACT.reloadTool = () => loadTool(S.ui.tab);
+
+/* ---------- Elanlar ---------- */
+function drawAnns(res){
+  const box = toolBox(); if (!box) return;
+  box.innerHTML = `<div class="section-head" style="margin-bottom:14px"><h3>Elanlar<span class="count">${res.anns.length}</span></h3>
+    <button class="btn btn-primary btn-sm" data-act="annForm">${ic('plus')}Yeni elan</button></div>
+    <p class="hint" style="margin-bottom:14px">Aktiv elan bütün müəllimlərin ana səhifəsinin yuxarısında görünür (hər kəs özü üçün bağlaya bilər). «Girişdə pəncərə» seçilsə, müəllim ilk dəfə girəndə açılan pəncərə də görünür.</p>
+    ${res.anns.length ? res.anns.map(a => `<div class="resp-card">
+      <div class="resp-head"><div style="flex:1;min-width:0"><div class="row" style="gap:8px">${a.active ? '<span class="tag solid">Aktiv</span>' : '<span class="tag">Söndürülüb</span>'}${a.popup ? '<span class="tag line">Girişdə pəncərə</span>' : ''}</div>
+        <h3 style="font-size:16px;margin-top:8px">${esc(a.title)}</h3></div>
+        <span class="lacts"><button class="ibtn sm" data-act="annForm" data-id="${a.id}" aria-label="Redaktə">${ic('edit')}</button><button class="ibtn sm" data-act="deleteAnn" data-id="${a.id}" aria-label="Sil">${ic('trash')}</button></span></div>
+      <p class="muted" style="white-space:pre-wrap;margin-top:6px;font-size:14px">${esc(a.body)}</p>
+      <small class="faint">${esc(a.by)} · ${fmtDT(a.createdAt)}</small></div>`).join('') : emptyBox('Elan yoxdur', 'İlk elanı yaradın.')}`;
+  S.ui.annCache = {}; res.anns.forEach(a => S.ui.annCache[a.id] = a);
+  hydrateIcons(box);
+}
+ACT.annForm = (b) => {
+  const a = b.dataset.id && S.ui.annCache ? S.ui.annCache[b.dataset.id] : null;
+  openModal({
+    title: a ? 'Elanı redaktə et' : 'Yeni elan',
+    body: `<form class="stack" id="anForm" novalidate>
+      <label class="field"><span>Başlıq</span><input class="input" name="title" maxlength="120" required value="${esc(a?a.title:'')}" placeholder="məsələn: Bayram tətili"></label>
+      <label class="field"><span>Mətn</span><textarea class="textarea" name="body" maxlength="2000" required placeholder="Elanın mətni">${esc(a?a.body:'')}</textarea></label>
+      <label class="chk"><input type="checkbox" name="popup" ${a&&a.popup?'checked':''}><span class="box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Girişdə açılan pəncərə kimi də göstər</label>
+      <label class="chk"><input type="checkbox" name="active" ${!a||a.active?'checked':''}><span class="box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Aktiv (müəllimlərə göstərilsin)</label>
+    </form>`,
+    foot: `<button class="btn btn-ghost" data-close>Ləğv et</button><button class="btn btn-primary" form="anForm" type="submit">${ic('check')}Yadda saxla</button>`,
+    onMount: (el, close) => el.querySelector('#anForm').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const f = el.querySelector('#anForm'), fd = new FormData(f);
+      const data = { id: a ? a.id : '', title: (fd.get('title')||'').trim(), body: (fd.get('body')||'').trim(), popup: fd.get('popup') === 'on', active: fd.get('active') === 'on' };
+      if (data.title.length < 2) return fieldErr(f, 'Başlıq yazın.');
+      if (data.body.length < 2) return fieldErr(f, 'Mətni yazın.');
+      run(el.querySelector('[type=submit]'), async () => {
+        try { await api('saveAnn', data, { noRender: true }); close(); toast(a ? 'Elan yeniləndi.' : 'Elan göndərildi.'); loadTool('ann'); }
+        catch (ex) { if (ex.code !== 'AUTH') fieldErr(f, ex.message); }
+      });
+    })
+  });
+};
+ACT.deleteAnn = async (b) => {
+  if (!await confirmBox({ title: 'Elanı sil', text: 'Bu elan hamıdan silinsin?', ok: 'Sil', danger: true })) return;
+  run(null, async () => { await api('deleteAnn', { id: b.dataset.id }, { noRender: true }); toast('Elan silindi.'); loadTool('ann'); });
+};
+
+/* ---------- Sorğu göndər ---------- */
+function drawSurveyTargets(res){
+  const box = toolBox(); if (!box) return;
+  const q = fold(S.ui.svq || '');
+  const list = res.targets.filter(t => !q || fold(t.name).includes(q));
+  box.innerHTML = `<p class="hint" style="margin-bottom:12px">Hər tələbə üçün link yaradın və valideynə göndərin. Link artıq tələbəni, müəllimi və ayı «tanıyır» — valideyn heç nə yazmır. Status: ${fmtMonthKey(res.monthKey)}.</p>
+    <div class="toolbar"><div class="input-wrap search">${ic('search','lead')}<input class="input has-lead" id="svq" placeholder="Tələbə axtar" value="${esc(S.ui.svq||'')}"></div></div>
+    ${list.length ? `<table class="ledger"><thead><tr><th>Tələbə</th><th>Məşğələ / müəllim</th><th>Status</th><th></th></tr></thead><tbody>
+      ${list.map(t => `<tr>
+        <td data-label="Tələbə" class="full"><div class="person"><span class="ava">${esc(initials(t.name))}</span><b>${esc(t.name)}</b></div></td>
+        <td data-label="Məşğələ">${t.courses.length ? t.courses.map(c => `${esc(c.title)} <small class="muted">(${esc(c.teacherName)})</small>`).join('<br>') : '<span class="faint">Məşğələ yoxdur</span>'}</td>
+        <td data-label="Status">${t.status==='answered'?'<span class="stat-chip answered">'+ic('check')+'Cavab verdi</span>':t.status==='sent'?'<span class="stat-chip sent">Göndərildi</span>':'<span class="stat-chip none">Göndərilməyib</span>'}</td>
+        <td class="actions">${t.courses.length && t.status!=='answered' ? `<button class="btn btn-sm btn-primary" data-act="makeSurvey" data-id="${t.id}">${ic('send')}${t.status==='sent'?'Linki göstər':'Link yarat'}</button>` : (t.status==='answered'?'<span class="faint">Tamamlanıb</span>':'')}</td>
+      </tr>`).join('')}</tbody></table>` : emptyBox('Tapılmadı', 'Axtarışı dəyişin.')}`;
+  S.ui.svTargets = {}; res.targets.forEach(t => S.ui.svTargets[t.id] = t);
+  hydrateIcons(box);
+  const inp = $('#svq'); if (inp) inp.addEventListener('input', e => { S.ui.svq = e.target.value; drawSurveyTargets(res); });
+}
+ACT.makeSurvey = (b) => {
+  const t = S.ui.svTargets[b.dataset.id];
+  if (t.courses.length === 1) return createSurvey(b, t.id, t.courses[0].id);
+  // çox məşğələ: seç
+  openModal({ title: 'Məşğələni seçin', size: 'sm', sub: esc(t.name),
+    body: `<div class="stack">${t.courses.map(c => `<button class="btn btn-block btn-soft" data-pick="${c.id}">${esc(c.title)} — ${esc(c.teacherName)}</button>`).join('')}</div>`,
+    onMount: (el, close) => el.querySelectorAll('[data-pick]').forEach(x => x.addEventListener('click', () => { close(); createSurvey(null, t.id, x.dataset.pick); }))
+  });
+};
+async function createSurvey(btn, studentId, courseId){
+  const r = await run(btn, () => api('sendSurvey', { studentId, courseId }, { noRender: true }));
+  if (!r) return;
+  showSurveyLink(r);
+  if (S.page === 'tools' && S.ui.tab === 'survey') loadTool('survey');
+}
+function showSurveyLink(r){
+  const url = location.origin + location.pathname + '#/s/' + r.token;
+  const waText = `Salam! Xidmətlərimizin keyfiyyətini artırmaq üçün ${r.studentName} ilə bağlı qısa sorğunu cavablandırmağınızı xahiş edirik. Təşəkkürlər!\n${url}`;
+  openModal({
+    title: 'Sorğu linki hazırdır', size: 'sm',
+    body: `<p class="hint" style="margin-bottom:12px">Tələbə: <b>${esc(r.studentName)}</b>, müəllim: ${esc(r.teacherName)}. Link 14 gün etibarlıdır və bir dəfə cavablana bilər.</p>
+      <div class="input-wrap"><input class="input" id="svLink" readonly value="${esc(url)}"><button class="ibtn sm" data-act="copyLink" aria-label="Kopyala">${ic('copy')}</button></div>`,
+    foot: `<a class="btn btn-soft" href="${esc(waLink(r.parentPhone, waText))}" target="_blank" rel="noopener">${ic('wa')}WhatsApp</a>
+      <button class="btn btn-primary" data-act="copyLink">${ic('copy')}Linki kopyala</button>`,
+    onMount: (el) => { const i = el.querySelector('#svLink'); setTimeout(() => { i.focus(); i.select(); }, 60); }
+  });
+}
+ACT.copyLink = (b) => {
+  const i = document.getElementById('svLink'); if (!i) return;
+  i.select();
+  const done = () => toast('Link kopyalandı.');
+  if (navigator.clipboard) navigator.clipboard.writeText(i.value).then(done, () => { try { document.execCommand('copy'); done(); } catch(e){} });
+  else { try { document.execCommand('copy'); done(); } catch(e){} }
+};
+
+/* ---------- Sorğu cavabları ---------- */
+function scoreBar(v){ let s=''; for(let i=1;i<=5;i++) s+=`<i class="${i<=v?'on':''}"></i>`; return `<span class="scorebar">${s}</span>`; }
+function drawResponses(res){
+  const box = toolBox(); if (!box) return;
+  const f = S.ui.respFilter || {};
+  box.innerHTML = `
+    ${res.summary.length ? `<div class="section-head"><h3>Müəllimlər üzrə orta qiymət</h3></div>
+    <div class="tile-grid" style="margin-bottom:20px">${res.summary.map(s => `<div class="tile">
+      <div class="row" style="justify-content:space-between"><b style="margin:0">${esc(s.teacherName)}</b>${s.low?`<span class="tag" style="background:var(--tint-2)">${s.low} aşağı</span>`:''}</div>
+      <div class="row" style="gap:10px;margin-top:6px"><span style="font-size:28px;font-weight:700">${s.avg==null?'—':s.avg}</span>${s.avg!=null?scoreBar(Math.round(s.avg)):''}</div>
+      <p style="font-size:12.5px;color:var(--soft)">${s.responses} cavab</p></div>`).join('')}</div>` : ''}
+    <div class="toolbar">
+      <select class="select" id="rf-teacher"><option value="">Bütün müəllimlər</option>${res.teachers.map(t => `<option value="${t.id}" ${f.teacherId===t.id?'selected':''}>${esc(t.name)}</option>`).join('')}</select>
+      <select class="select" id="rf-month"><option value="">Bütün aylar</option>${res.months.map(m => `<option value="${m}" ${f.month===m?'selected':''}>${fmtMonthKey(m)}</option>`).join('')}</select>
+      <label class="chk" style="margin-left:4px"><input type="checkbox" id="rf-low" ${f.low?'checked':''}><span class="box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Yalnız aşağı qiymətlər</label>
+    </div>
+    <p class="hint" style="margin-bottom:12px">Tapıldı: ${res.shown} / ${res.total}</p>
+    <div id="respList">${res.responses.length ? res.responses.map(respCard).join('') : emptyBox('Cavab yoxdur', 'Bu filtrə uyğun cavab tapılmadı.')}</div>`;
+  S.ui.respCache = {}; res.responses.forEach(r => S.ui.respCache[r.id] = r);
+  hydrateIcons(box);
+  const upd = () => { S.ui.respFilter = {
+    teacherId: $('#rf-teacher').value, month: $('#rf-month').value, low: $('#rf-low').checked
+  }; loadTool('responses'); };
+  $('#rf-teacher').addEventListener('change', upd);
+  $('#rf-month').addEventListener('change', upd);
+  $('#rf-low').addEventListener('change', upd);
+}
+const ASTAT = { new:['Yeni','new'], reviewed:['Baxıldı','reviewed'], contacted:['Əlaqə saxlanıldı','contacted'] };
+function respCard(r){
+  const av = r.answers.map(a => {
+    let val = a.value;
+    if (a.type === 'scale5') val = scoreBar(a.value) + ' <b>' + a.value + '/5</b>';
+    else if (a.type === 'nps') val = '<b>' + a.value + '/10</b>';
+    else val = esc(a.value || '—');
+    return `<div class="q">${esc(a.q)}</div><div class="a">${val}</div>`;
+  }).join('');
+  const st = ASTAT[r.adminStatus] || ASTAT.new;
+  return `<div class="resp-card ${r.low ? 'low' : ''}">
+    <div class="resp-head"><div style="flex:1;min-width:0"><b style="font-weight:600">${esc(r.studentName)}</b>${r.low?' <span class="tag solid">Aşağı qiymət</span>':''}
+      <br><small class="muted">${esc(r.teacherName)} · ${esc(r.courseTitle)} · ${fmtDT(r.answeredAt)}${r.teacherScore!=null?' · müəllim balı: '+r.teacherScore:''}</small></div>
+      <span class="astat ${st[1]}">${esc(st[0])}</span></div>
+    <div class="answers-grid">${av}</div>
+    ${r.adminNote ? `<p class="hint" style="margin-top:10px">${ic('info')} ${esc(r.adminNote)}</p>` : ''}
+    <div class="row" style="margin-top:12px"><button class="btn btn-sm btn-soft" data-act="respStatus" data-id="${r.id}">${ic('flag')}Status / qeyd</button></div>
+  </div>`;
+}
+ACT.respStatus = (b) => {
+  const r = S.ui.respCache[b.dataset.id];
+  openModal({ title: 'Cavabın statusu', size: 'sm', sub: esc(r.studentName),
+    body: `<form class="stack" id="rsForm">
+      <div class="field"><span>Status</span><div class="seg full">
+        ${Object.keys(ASTAT).map(k => `<label><input type="radio" name="st" value="${k}" ${r.adminStatus===k||(!r.adminStatus&&k==='new')?'checked':''}><span>${ASTAT[k][0]}</span></label>`).join('')}</div></div>
+      <label class="field"><span>Qeyd (yalnız admin üçün)</span><textarea class="textarea" name="note" maxlength="500" placeholder="məsələn: Valideynlə danışıldı, məsələ həll olundu.">${esc(r.adminNote||'')}</textarea></label>
+    </form>`,
+    foot: `<button class="btn btn-ghost" data-close>Ləğv et</button><button class="btn btn-primary" form="rsForm" type="submit">${ic('check')}Yadda saxla</button>`,
+    onMount: (el, close) => el.querySelector('#rsForm').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const fd = new FormData(el.querySelector('#rsForm'));
+      run(el.querySelector('[type=submit]'), async () => {
+        try { await api('setSurveyStatus', { id: r.id, status: fd.get('st'), note: fd.get('note') }, { noRender: true }); close(); toast('Status yeniləndi.'); loadTool('responses'); }
+        catch (ex) { if (ex.code !== 'AUTH') toast(ex.message, 'err'); }
+      });
+    })
+  });
+};
+
+/* ---------- Suallar (editor) ---------- */
+const QTYPE = { scale5:'1–5 qiymət', choice:'Variantlar', nps:'0–10 tövsiyə', text:'Mətn' };
+function drawQuestions(res){
+  const box = toolBox(); if (!box) return;
+  if (!res.canEdit){ box.innerHTML = emptyBox('İcazə yoxdur', 'Sualları yalnız «Sorğu suallarını redaktə et» icazəsi olan dəyişə bilər.'); return; }
+  S.ui.qdraft = JSON.parse(JSON.stringify(res.survey.questions));
+  S.ui.qintro = res.survey.intro || '';
+  box.innerHTML = `<p class="hint" style="margin-bottom:12px">Sualları dəyişsəniz, versiya artır və köhnə cavablar öz suallarını saxlayır (statistika pozulmur). Cari versiya: ${res.survey.version}.</p>
+    <label class="field" style="margin-bottom:14px"><span>Giriş mətni (valideynə göstərilir)</span><textarea class="textarea" id="qintro" maxlength="600">${esc(S.ui.qintro)}</textarea></label>
+    <div class="qedit" id="qedit"></div>
+    <div class="row" style="margin-top:14px"><button class="btn btn-soft" data-act="qadd">${ic('plus')}Sual əlavə et</button>
+      <button class="btn btn-primary" data-act="qsave" style="margin-left:auto">${ic('check')}Yadda saxla</button></div>`;
+  drawQedit();
+}
+function drawQedit(){
+  const wrap = $('#qedit'); if (!wrap) return;
+  wrap.innerHTML = S.ui.qdraft.map((q, i) => `<div class="qrow" data-i="${i}">
+    <div class="qrow-top"><span class="num">${i+1}</span>
+      <input class="input" data-qf="text" value="${esc(q.text)}" placeholder="Sualın mətni" maxlength="300">
+      <button class="ibtn sm" data-act="qdel" data-i="${i}" aria-label="Sil">${ic('trash')}</button></div>
+    <div class="row" style="gap:10px">
+      <select class="select" data-qf="type" style="flex:0 1 180px">${Object.keys(QTYPE).map(t => `<option value="${t}" ${q.type===t?'selected':''}>${QTYPE[t]}</option>`).join('')}</select>
+      ${q.type==='scale5' ? `<label class="chk"><input type="checkbox" data-qf="teacher" ${q.teacher?'checked':''}><span class="box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Müəllim qiyməti</label>` : ''}
+    </div>
+    ${q.type==='choice' ? `<input class="input" data-qf="options" value="${esc((q.options||[]).join(', '))}" placeholder="Variantlar vergüllə: Bəli, Qismən, Xeyr">
+      <input class="input" data-qf="bad" value="${esc((q.bad||[]).join(', '))}" placeholder="«Aşağı» sayılan variantlar (istəyə bağlı): Xeyr">` : ''}
+  </div>`).join('');
+  hydrateIcons(wrap);
+  wrap.querySelectorAll('.qrow').forEach(row => {
+    const i = Number(row.dataset.i);
+    row.querySelectorAll('[data-qf]').forEach(el => el.addEventListener(el.tagName==='SELECT'||el.type==='checkbox'?'change':'input', () => {
+      const f = el.dataset.qf;
+      if (f === 'teacher') S.ui.qdraft[i].teacher = el.checked;
+      else if (f === 'type'){ S.ui.qdraft[i].type = el.value; syncDraft(); drawQedit(); }
+      else if (f === 'options') S.ui.qdraft[i].options = el.value.split(',').map(x=>x.trim()).filter(Boolean);
+      else if (f === 'bad') S.ui.qdraft[i].bad = el.value.split(',').map(x=>x.trim()).filter(Boolean);
+      else S.ui.qdraft[i][f] = el.value;
+    }));
+  });
+}
+function syncDraft(){ /* dom dəyərlərini drafta köçür */
+  $$('#qedit .qrow').forEach(row => { const i=Number(row.dataset.i); const t=row.querySelector('[data-qf=text]'); if(t) S.ui.qdraft[i].text=t.value; });
+}
+ACT.qadd = () => { syncDraft(); S.ui.qdraft.push({ id:'q'+(S.ui.qdraft.length+1), type:'scale5', text:'' }); drawQedit(); };
+ACT.qdel = (b) => { syncDraft(); S.ui.qdraft.splice(Number(b.dataset.i), 1); drawQedit(); };
+ACT.qsave = (b) => {
+  syncDraft();
+  const intro = $('#qintro') ? $('#qintro').value : '';
+  if (!S.ui.qdraft.length || S.ui.qdraft.some(q => !q.text.trim())) return toast('Hər sualın mətni olmalıdır.', 'err');
+  run(b, async () => {
+    try { const r = await api('saveSurveyQuestions', { intro, questions: S.ui.qdraft }, { noRender: true }); toast('Suallar yadda saxlanıldı (versiya ' + r.survey.version + ').'); loadTool('questions'); }
+    catch (ex) { if (ex.code !== 'AUTH') toast(ex.message, 'err'); }
+  });
+};
+
+/* ---------- Zibil qutusu ---------- */
+function drawTrash(res){
+  const box = toolBox(); if (!box) return;
+  const sec = (title, arr, kind, render) => `<div class="section"><div class="section-head"><h3>${title}<span class="count">${arr.length}</span></h3></div>
+    ${arr.length ? `<table class="ledger"><tbody>${arr.map(x => `<tr>
+      <td class="full">${render(x)}<br><small class="muted">Silinib: ${fmtDT(x.deletedAt)} · ${esc(x.deletedBy)} · ${x.daysLeft} gün sonra həmişəlik silinəcək</small></td>
+      <td class="actions"><button class="btn btn-sm btn-soft" data-act="restoreItem" data-kind="${kind}" data-id="${x.id}">${ic('restore')}Bərpa et</button>
+        <button class="ibtn sm" data-act="purgeItem" data-kind="${kind}" data-id="${x.id}" aria-label="Həmişəlik sil">${ic('trash')}</button></td></tr>`).join('')}</tbody></table>` : `<p class="hint">Boşdur.</p>`}</div>`;
+  const total = res.students.length + res.users.length + res.courses.length;
+  box.innerHTML = `<p class="hint" style="margin-bottom:6px">Silinən tələbə, istifadəçi və məşğələlər burada ${res.purgeDays} gün saxlanılır və bərpa oluna bilər. Sonra avtomatik silinir.</p>
+    ${total === 0 ? emptyBox('Zibil qutusu boşdur', 'Silinmiş heç nə yoxdur.') :
+      sec('Tələbələr', res.students, 'student', x => `<b>${esc(x.name)}</b>${x.phone?' · '+esc(x.phone):''}`) +
+      sec('İstifadəçilər', res.users, 'user', x => `<b>${esc(x.name)}</b> · ${roleLabel(x.role)}${x.login?' · '+esc(x.login):''}`) +
+      sec('Məşğələlər', res.courses, 'course', x => `<b>${esc(x.title)}</b> · ${typeLabel(x.type)} · ${esc(x.teacherName)}`)}`;
+  hydrateIcons(box);
+}
+ACT.restoreItem = (b) => run(b, async () => { await api('restoreItem', { kind: b.dataset.kind, id: b.dataset.id }); toast('Bərpa edildi.'); loadTool('trash'); });
+ACT.purgeItem = async (b) => {
+  if (!await confirmBox({ title: 'Həmişəlik sil', text: 'Bu element həmişəlik silinəcək və bərpa oluna bilməyəcək. Davam edilsin?', ok: 'Həmişəlik sil', danger: true })) return;
+  run(b, async () => { await api('purgeItem', { kind: b.dataset.kind, id: b.dataset.id }); toast('Həmişəlik silindi.'); loadTool('trash'); });
+};
+
+/* ---------- Toplu əməliyyatlar ---------- */
+function drawBulk(){
+  const box = toolBox(); if (!box) return;
+  box.innerHTML = `<div class="tile-grid">
+    <div class="tile">${ic('teacher')}<b>Müəllim dəyişmə</b><p>Bir müəllimin bütün məşğələlərini bir əməliyyatla başqa müəllimə verin (müəllim işdən çıxanda).</p>
+      <button class="btn btn-primary btn-sm" data-act="teacherLeaveForm" style="align-self:flex-start;margin-top:8px">${ic('swap')}Başla</button></div>
+    <div class="tile">${ic('users')}<b>Tələbələri köçür</b><p>Bir qrupdan seçilmiş tələbələri başqa qrupa köçürün. Köçürmə tarixçədə qeyd olunur.</p>
+      <button class="btn btn-primary btn-sm" data-act="moveStudentsForm" style="align-self:flex-start;margin-top:8px">${ic('swap')}Başla</button></div>
+  </div>`;
+  hydrateIcons(box);
+}
+function teacherOptions(exceptId){
+  return (S.d.users||[]).filter(u => (u.role === 'teacher' || u.role === 'superadmin') && u.id !== exceptId)
+    .sort((a,b)=>a.name.localeCompare(b.name,'az')).map(u => `<option value="${u.id}">${esc(u.name)}${u.role==='superadmin'?' (baş admin)':''}</option>`).join('');
+}
+ACT.teacherLeaveForm = () => {
+  const teachers = (S.d.users||[]).filter(u => u.role === 'teacher').sort((a,b)=>a.name.localeCompare(b.name,'az'));
+  const withCourses = teachers.map(t => ({ t, n: (S.d.courses||[]).filter(c => c.teacherId === t.id).length })).filter(x => x.n > 0);
+  openModal({ title: 'Müəllimin məşğələlərini köçür', size: 'sm',
+    body: `<form class="stack" id="tlForm">
+      <label class="field"><span>Hansı müəllim?</span><select class="select" name="teacherId" required><option value="">Seçin</option>
+        ${withCourses.map(x => `<option value="${x.t.id}">${esc(x.t.name)} (${x.n} məşğələ)</option>`).join('')}</select>
+        ${withCourses.length?'':'<small>Məşğələsi olan müəllim yoxdur.</small>'}</label>
+      <label class="field"><span>Kimə verilsin?</span><select class="select" name="toTeacherId" required><option value="">Seçin</option>${teacherOptions('')}</select></label>
+      <p class="hint">Seçilmiş müəllimin bütün məşğələləri hədəf müəlliməyə keçəcək. Dərs tarixçəsi dəyişməz qalır.</p>
+    </form>`,
+    foot: `<button class="btn btn-ghost" data-close>Ləğv et</button><button class="btn btn-primary" form="tlForm" type="submit">${ic('swap')}Köçür</button>`,
+    onMount: (el, close) => el.querySelector('#tlForm').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const fd = new FormData(el.querySelector('#tlForm'));
+      if (!fd.get('teacherId') || !fd.get('toTeacherId')) return fieldErr(el.querySelector('#tlForm'), 'Hər iki müəllimi seçin.');
+      if (fd.get('teacherId') === fd.get('toTeacherId')) return fieldErr(el.querySelector('#tlForm'), 'Fərqli müəllim seçin.');
+      run(el.querySelector('[type=submit]'), async () => {
+        try { const r = await api('teacherLeave', Object.fromEntries(fd)); close(); toast(r.moved + ' məşğələ köçürüldü.'); }
+        catch (ex) { if (ex.code !== 'AUTH') fieldErr(el.querySelector('#tlForm'), ex.message); }
+      });
+    })
+  });
+};
+ACT.moveStudentsForm = () => {
+  const groups = (S.d.courses||[]).filter(c => c.type === 'group');
+  const st = { from: '', to: '', sel: new Set() };
+  openModal({ title: 'Tələbələri köçür', size: 'wide',
+    body: `<form class="stack" id="msForm">
+      <div class="grid2">
+        <label class="field"><span>Hansı qrupdan?</span><select class="select" name="from"><option value="">Seçin</option>${groups.map(c => `<option value="${c.id}">${esc(courseTitle(c))} (${esc(c.teacherName)})</option>`).join('')}</select></label>
+        <label class="field"><span>Hansı qrupa?</span><select class="select" name="to"><option value="">Seçin</option>${groups.map(c => `<option value="${c.id}">${esc(courseTitle(c))} (${esc(c.teacherName)})</option>`).join('')}</select></label>
+      </div>
+      <div id="msStudents"><p class="hint">Əvvəlcə mənbə qrupu seçin.</p></div>
+    </form>`,
+    foot: `<button class="btn btn-ghost" data-close>Ləğv et</button><button class="btn btn-primary" form="msForm" type="submit">${ic('swap')}Köçür</button>`,
+    onMount: (el, close) => {
+      const f = el.querySelector('#msForm');
+      const drawS = () => {
+        const box = el.querySelector('#msStudents');
+        const c = groups.find(g => g.id === st.from);
+        if (!c){ box.innerHTML = '<p class="hint">Əvvəlcə mənbə qrupu seçin.</p>'; return; }
+        box.innerHTML = `<p class="lbl" style="margin-bottom:8px">Köçürüləcək tələbələr</p><div class="att-list">${c.studentIds.map(id => `<label class="pk chk" style="border-bottom:1.5px solid var(--line)"><input type="checkbox" value="${id}" ${st.sel.has(id)?'checked':''}><span class="box"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="nm">${esc(stuName(id))}</span></label>`).join('')}</div>`;
+        box.querySelectorAll('input[type=checkbox]').forEach(x => x.addEventListener('change', () => { x.checked ? st.sel.add(x.value) : st.sel.delete(x.value); }));
+      };
+      f.from.addEventListener('change', e => { st.from = e.target.value; st.sel.clear(); drawS(); });
+      f.to.addEventListener('change', e => { st.to = e.target.value; });
+      f.addEventListener('submit', ev => {
+        ev.preventDefault();
+        if (!st.from || !st.to) return fieldErr(f, 'Hər iki qrupu seçin.');
+        if (st.from === st.to) return fieldErr(f, 'Fərqli qrup seçin.');
+        if (!st.sel.size) return fieldErr(f, 'Ən azı bir tələbə seçin.');
+        run(el.querySelector('[type=submit]'), async () => {
+          try { const r = await api('moveStudents', { fromCourseId: st.from, toCourseId: st.to, studentIds: [...st.sel] }); close(); toast(r.moved + ' tələbə köçürüldü.'); }
+          catch (ex) { if (ex.code !== 'AUTH') fieldErr(f, ex.message); }
+        });
+      });
+    }
+  });
+};
+
+/* ---------- Yoxlama ---------- */
+function drawCheckIntro(){
+  const box = toolBox(); if (!box) return;
+  box.innerHTML = `<div class="tile" style="max-width:520px"><div class="row" style="gap:10px">${ic('shield')}<b style="margin:0">Məlumatların yoxlanışı</b></div>
+    <p>Sistemdəki məlumatları yoxlayır: təkrarlanan tələbələr, boş və ya tək tələbəli qruplar, normadan artıq dərs, silinmiş qeydlərə istinadlar. Cədvəli əllə dəyişdikdə yaranan problemləri tapmağa kömək edir.</p>
+    <button class="btn btn-primary" data-act="runCheck" style="align-self:flex-start;margin-top:10px">${ic('shield')}Yoxlamanı başlat</button></div>
+    <div id="checkResult"></div>`;
+  hydrateIcons(box);
+}
+ACT.runCheck = (b) => run(b, async () => {
+  const r = await api('dataCheck', {}, { noRender: true });
+  const box = $('#checkResult'); if (!box) return;
+  const icn = { err:'xcircle', warn:'alert', info:'info' };
+  box.innerHTML = `<div class="section"><div class="section-head"><h3>Nəticə</h3></div>
+    <div class="summary" style="margin-bottom:16px">${[['students','tələbə'],['courses','məşğələ'],['lessons','dərs qeydi'],['payments','ödəniş']].map(([k,l]) => `<div><b>${r.counts[k]}</b><span>${l}</span></div>`).join('')}</div>
+    ${r.issues.length ? r.issues.map(i => `<div class="resp-card ${i.type==='err'?'low':''}" style="margin-bottom:10px"><div class="row" style="gap:10px">${ic(icn[i.type]||'info')}<span>${esc(i.text)}</span></div></div>`).join('')
+      : `<div class="empty" style="border-color:var(--or)">${ic('checkcircle')}<h4>Problem tapılmadı</h4><p>Bütün məlumatlar qaydasındadır.</p></div>`}</div>`;
+  hydrateIcons(box);
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+/* ===================== STUDENT TRANSFER (tək) ===================== */
+ACT.transferForm = (b) => {
+  const sid = b.dataset.student, fromId = b.dataset.from;
+  const from = S.cMap[fromId];
+  const groups = (S.d.courses||[]).filter(c => c.type === 'group' && c.id !== fromId);
+  openModal({ title: 'Tələbəni köçür', size: 'sm', sub: esc(stuName(sid)) + ' · «' + esc(courseTitle(from)) + '»-dən',
+    body: `<form class="stack" id="trForm">
+      <label class="field"><span>Hansı qrupa?</span><select class="select" name="to" required><option value="">Seçin</option>${groups.map(c => `<option value="${c.id}">${esc(courseTitle(c))} (${esc(c.teacherName)})</option>`).join('')}</select></label>
+      <label class="field"><span>Qeyd (istəyə bağlı)</span><input class="input" name="note" maxlength="200" placeholder="məsələn: səviyyəyə görə"></label>
+      <p class="hint">Köçürmə hər iki qrupun müəlliminə bildiriş kimi gedir və tarixçədə qalır.</p>
+    </form>`,
+    foot: `<button class="btn btn-ghost" data-close>Ləğv et</button><button class="btn btn-primary" form="trForm" type="submit">${ic('swap')}Köçür</button>`,
+    onMount: (el, close) => el.querySelector('#trForm').addEventListener('submit', ev => {
+      ev.preventDefault();
+      const fd = new FormData(el.querySelector('#trForm'));
+      if (!fd.get('to')) return fieldErr(el.querySelector('#trForm'), 'Hədəf qrupu seçin.');
+      run(el.querySelector('[type=submit]'), async () => {
+        try { await api('transferStudent', { studentId: sid, fromCourseId: fromId, toCourseId: fd.get('to'), note: fd.get('note') }); close(); toast('Tələbə köçürüldü.'); if (S.page === 'student') loadCard(); }
+        catch (ex) { if (ex.code !== 'AUTH') fieldErr(el.querySelector('#trForm'), ex.message); }
+      });
+    })
+  });
+};
+
+/* ============================================================
+ *  PUBLIC (girişsiz) — valideyn linkləri
+ * ============================================================ */
+function publicRoute(){
+  const h = location.hash.replace(/^#\/?/, '');
+  const m = h.match(/^(v|s)\/(.+)$/);
+  if (!m) return false;
+  showPublic();
+  if (m[1] === 'v') renderPublicCard(decodeURIComponent(m[2]));
+  else renderPublicSurvey(decodeURIComponent(m[2]));
+  return true;
+}
+function showPublic(){
+  $('#login').hidden = true; $('#shell').hidden = true; $('#boot').hidden = true; $('#maint').hidden = true;
+  $('#public').hidden = false;
+}
+function pubShell(inner){
+  return `<div class="pub-wrap"><div class="pub-top">
+    <a class="logo"><span class="logo-mark"></span><span class="logo-text"><b>Aslan Lessons</b><small>Dərs qeydiyyatı</small></span></a>
+    <button class="ibtn theme-btn" data-act="toggleTheme" aria-label="Görünüş"></button></div>${inner}
+    <p class="pub-foot">Aslan Lessons · ${new Date().getFullYear()}</p></div>`;
+}
+function pubPaint(html){ const el = $('#public'); el.innerHTML = html; el.querySelectorAll('[data-logo]').length; $$('[data-logo]', el).forEach(x=>{x.innerHTML=LOGO_SVG('#fff');}); el.querySelector('.logo-mark').innerHTML = LOGO_SVG('#fff'); hydrateIcons(el); setTheme(S.theme, false); const tb=$('#public .theme-btn'); if(tb) tb.innerHTML = ic(S.theme==='dark'?'sun':'moon'); }
+function pubLoading(){ pubPaint(pubShell(`<div class="empty" style="border:0"><div class="pips">${Array.from({length:4},(_,i)=>`<i class="pip" style="animation:bootPip 1.2s var(--ease) infinite;animation-delay:${i*150}ms"></i>`).join('')}</div><p>Yüklənir…</p></div>`)); }
+function pubError(msg){ pubPaint(pubShell(`<div class="pub-card" style="text-align:center">${ic('xcircle')}<h3 style="margin-top:8px">${esc(msg)}</h3><p class="muted">Zəhmət olmasa, linki göndərən şəxslə əlaqə saxlayın.</p></div>`)); }
+
+async function renderPublicCard(token){
+  pubLoading();
+  try {
+    const r = await api('publicCard', { token }, { noRender: true, silent: true });
+    const k = r.card, s = k.student, total = k.stats.held + k.stats.absent;
+    const rate = total ? Math.round(k.stats.held / total * 100) : 0;
+    pubPaint(pubShell(`
+      <div class="pub-hero"><div class="brand-rings"></div>
+        <div class="eyebrow">Tələbə hesabatı</div><h1>${esc(s.name)}</h1>
+        <p class="sub">Dərs davamiyyəti və gedişat</p></div>
+      <div class="pub-stats">
+        <div class="pub-stat"><b>${k.courses.length}</b><span>aktiv məşğələ</span></div>
+        <div class="pub-stat"><b>${k.stats.held}</b><span>keçirilən dərs</span></div>
+        <div class="pub-stat"><b>${k.stats.absent}</b><span>qayıb</span></div>
+        <div class="pub-stat"><b>${rate}%</b><span>davamiyyət</span></div>
+      </div>
+      ${k.courses.length ? `<div class="pub-card"><h3>Məşğələlər</h3><div class="cgrid">${k.courses.map(c => `<article class="ccard${c.complete?' done':''}">
+        <div class="ccard-top"><span class="tag${c.type==='group'?' solid':''}">${typeLabel(c.type)}</span><span class="month">Ay ${c.monthNo}</span></div>
+        <div><h3>${esc(c.title || (c.type==='individual'? s.name : c.studentNames.slice(0,2).join(', ')))}</h3><p class="who">Müəllim: <b>${esc(c.teacherName)}</b></p></div>
+        <div class="ccard-prog">${pips(c.held,c.lessonsPerMonth)}<span class="frac">${c.held}/${c.lessonsPerMonth}</span></div>
+        <p class="ccard-meta">Bu ay ${c.mine.held} dərsdə iştirak${c.mine.absent?`, ${c.mine.absent} qayıb`:''}.</p></article>`).join('')}</div></div>` : ''}
+      ${total ? `<div class="pub-card"><h3>Davamiyyət</h3><div class="donut-wrap"><div class="donut-box">${donut(rate,'davamiyyət')}</div>
+        <div class="legend"><div><i style="background:var(--or)"></i>Keçirilən dərs: <b>${k.stats.held}</b></div><div><i style="background:var(--tint-2)"></i>Qayıb: <b>${k.stats.absent}</b></div></div></div>
+        ${k.monthly.length>1?`<div style="margin-top:18px">${barsChart(k.monthly)}</div>`:''}</div>` : ''}
+      ${k.history.length ? `<div class="pub-card"><h3>Son dərslər</h3><table class="ledger">
+        <thead><tr><th>Tarix</th><th>Məşğələ</th><th>Status</th></tr></thead><tbody>
+        ${k.history.slice(0,20).map(h => `<tr><td data-label="Tarix" class="nowrap">${fmtDate(h.date)}</td>
+          <td data-label="Məşğələ">${esc(h.courseTitle)}${h.topic?`<br><small class="muted">Mövzu: ${esc(h.topic)}</small>`:''}</td>
+          <td data-label="Status">${h.status==='keçdi'?'<span class="pill held">'+ic('check')+'Keçdi</span>':'<span class="pill absent">'+ic('x')+'<span>Qayıb'+(h.reason?': <span class="why">'+esc(h.reason)+'</span>':'')+'</span></span>'}</td></tr>`).join('')}
+        </tbody></table></div>` : ''}
+      ${k.payments && k.payments.length ? `<div class="pub-card"><h3>Ödənişlər</h3><table class="ledger"><thead><tr><th>Tarix</th><th>Məbləğ</th><th>Qeyd</th></tr></thead><tbody>
+        ${k.payments.map(p => `<tr><td data-label="Tarix" class="nowrap">${fmtDate(p.date)}</td><td data-label="Məbləğ"><b>${fmtMoney(p.amount)}</b></td><td data-label="Qeyd">${esc(p.note||'—')}</td></tr>`).join('')}
+        </tbody></table><p class="hint" style="margin-top:10px">Cəmi: <b>${fmtMoney(k.paymentsTotal)}</b></p></div>` : ''}
+    `));
+  } catch (e) { pubError(e.code === 'NOTFOUND' ? 'Tələbə tapılmadı. Link yanlışdır.' : (e.message || 'Açılmadı.')); }
+}
+
+const PUB_SV = { state: null, token: null, ans: {}, data: null };
+async function renderPublicSurvey(token){
+  pubLoading();
+  PUB_SV.token = token; PUB_SV.ans = {};
+  try {
+    const r = await api('publicSurveyInfo', { token }, { noRender: true, silent: true });
+    PUB_SV.data = r; PUB_SV.state = r.state;
+    drawPublicSurvey();
+  } catch (e) { pubError(e.code === 'NOTFOUND' ? 'Sorğu tapılmadı. Link yanlışdır.' : (e.message || 'Açılmadı.')); }
+}
+function drawPublicSurvey(){
+  const r = PUB_SV.data;
+  if (PUB_SV.state === 'answered') return pubPaint(pubShell(`<div class="pub-card" style="text-align:center">${ic('checkcircle')}<h3 style="margin-top:8px">Siz artıq cavab vermisiniz</h3><p class="muted">Vaxtınız üçün təşəkkür edirik!</p></div>`));
+  if (PUB_SV.state === 'expired') return pubPaint(pubShell(`<div class="pub-card" style="text-align:center">${ic('clock')}<h3 style="margin-top:8px">Linkin vaxtı bitib</h3><p class="muted">Yeni link üçün kursla əlaqə saxlayın.</p></div>`));
+  if (PUB_SV.state === 'done') return pubPaint(pubShell(`<div class="pub-card" style="text-align:center">${ic('checkcircle')}<h3 style="margin-top:8px">Təşəkkür edirik!</h3><p class="muted">Cavabınız qeydə alındı. Fikirləriniz bizim üçün dəyərlidir.</p></div>`));
+  pubPaint(pubShell(`
+    <div class="pub-hero"><div class="brand-rings"></div><div class="eyebrow">Məmnunluq sorğusu</div>
+      <h1>Rəyiniz vacibdir</h1><p class="sub">Tələbə: ${esc(r.studentName)} · Müəllim: ${esc(r.teacherName)}</p></div>
+    <div class="pub-card"><p class="muted" style="margin-bottom:4px">${esc(r.intro||'')}</p></div>
+    <form id="svForm">${r.questions.map((q, i) => `<div class="pub-card"><h3 style="font-size:15px">${i+1}. ${esc(q.text)}</h3>${svField(q)}</div>`).join('')}
+      <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:4px">${ic('check')}Cavabı göndər</button></form>`));
+  const form = $('#svForm', $('#public'));
+  form.addEventListener('click', e => {
+    const opt = e.target.closest('[data-opt]'); if (!opt) return;
+    PUB_SV.ans[opt.dataset.q] = opt.dataset.val;
+    form.querySelectorAll(`[data-q="${opt.dataset.q}"]`).forEach(x => x.classList.remove('btn-primary'));
+    form.querySelectorAll(`[data-q="${opt.dataset.q}"]`).forEach(x => x.classList.add('btn-soft'));
+    opt.classList.remove('btn-soft'); opt.classList.add('btn-primary');
+  });
+  form.addEventListener('input', e => { if (e.target.dataset.qt) PUB_SV.ans[e.target.dataset.qt] = e.target.value; });
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const miss = r.questions.find(q => q.type !== 'text' && (PUB_SV.ans[q.id] === undefined || PUB_SV.ans[q.id] === ''));
+    if (miss){ toast('Bütün suallara cavab verin.', 'err'); const card = [...form.querySelectorAll('.pub-card')][r.questions.indexOf(miss)]; if (card) card.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
+    const btn = form.querySelector('[type=submit]');
+    const answers = r.questions.map(q => ({ id: q.id, value: PUB_SV.ans[q.id] !== undefined ? PUB_SV.ans[q.id] : '' }));
+    await run(btn, async () => {
+      try { const res = await api('submitSurvey', { token: PUB_SV.token, answers }, { noRender: true }); PUB_SV.state = res.state || 'done'; drawPublicSurvey(); window.scrollTo({ top: 0 }); }
+      catch (ex) { toast(ex.message, 'err'); }
+    });
+  });
+}
+function svField(q){
+  if (q.type === 'scale5') return `<div class="row" data-qrow>${[1,2,3,4,5].map(n => `<button type="button" class="btn btn-soft" data-opt data-q="${q.id}" data-val="${n}" style="flex:1;min-width:52px">${n}</button>`).join('')}</div><div class="row" style="justify-content:space-between;margin-top:4px"><small class="faint">Çox pis</small><small class="faint">Əla</small></div>`;
+  if (q.type === 'nps') return `<div class="row" style="flex-wrap:wrap;gap:6px">${Array.from({length:11},(_,n) => `<button type="button" class="btn btn-soft btn-sm" data-opt data-q="${q.id}" data-val="${n}" style="min-width:40px">${n}</button>`).join('')}</div>`;
+  if (q.type === 'choice') return `<div class="row" style="flex-wrap:wrap">${(q.options||[]).map(o => `<button type="button" class="btn btn-soft" data-opt data-q="${q.id}" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+  return `<textarea class="textarea" data-qt="${q.id}" maxlength="1000" placeholder="Cavabınız (istəyə bağlı)"></textarea>`;
+}
+
 /* ===================== START ===================== */
 (function init(){
   $('#year').textContent = new Date().getFullYear();
   hydrateIcons();
   $('[data-act=togglePass]').innerHTML = ic('eye');
   setTheme('light', false);
+  if (publicRoute()) return;
   showLogin();
 })();
+window.addEventListener('hashchange', () => {
+  if (!S.token && /^#\/(v|s)\//.test(location.hash)) publicRoute();
+});
 </script>
 </body>
 </html>
